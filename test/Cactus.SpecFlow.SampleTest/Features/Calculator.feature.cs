@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Cactus.SpecFlow.SpecFlowTest.Features
+namespace Cactus.SpecFlow.SampleTest.Features
 {
     using TechTalk.SpecFlow;
     using System;
