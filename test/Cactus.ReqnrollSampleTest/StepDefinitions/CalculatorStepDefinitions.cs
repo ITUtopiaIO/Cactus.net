@@ -1,11 +1,12 @@
 using NUnit.Framework;
 
-namespace Cactus.SpecFlow.SpecFlowTest.StepDefinitions
+namespace Cactus.ReqnrollSampleTest.StepDefinitions
 {
     [Binding]
     public sealed class CalculatorStepDefinitions
     {
-        // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
+        // For additional details on Reqnroll step definitions see https://go.reqnroll.net/doc-stepdef
+
         int _firstNumber;
         int _secondNumber;
         int _result;
