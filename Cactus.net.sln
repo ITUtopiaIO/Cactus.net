@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.Reqnroll", "src\Cact
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.ReqnrollSampleTest", "test\Cactus.ReqnrollSampleTest\Cactus.ReqnrollSampleTest.csproj", "{41A6E996-8DE0-45FF-BEC2-134167337AB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.MiniExcelNUnitTest", "Test\Cactus.MiniExcelNUnitTest\Cactus.MiniExcelNUnitTest.csproj", "{E3BA0881-BAFE-426E-B4FF-3B300174883B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{41A6E996-8DE0-45FF-BEC2-134167337AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41A6E996-8DE0-45FF-BEC2-134167337AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41A6E996-8DE0-45FF-BEC2-134167337AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3BA0881-BAFE-426E-B4FF-3B300174883B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3BA0881-BAFE-426E-B4FF-3B300174883B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3BA0881-BAFE-426E-B4FF-3B300174883B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3BA0881-BAFE-426E-B4FF-3B300174883B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{1820AA45-D2FC-45D2-9D75-4EAF1B91A5DA} = {59476B3B-E737-4F49-8164-04448E7389AA}
 		{77CC94C6-9490-47E6-BEE3-72C4DF3A00F7} = {59476B3B-E737-4F49-8164-04448E7389AA}
 		{41A6E996-8DE0-45FF-BEC2-134167337AB7} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
+		{E3BA0881-BAFE-426E-B4FF-3B300174883B} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A757270-A1E5-443E-AAE5-4ECBE36C473A}
