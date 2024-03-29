@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.Reqnroll", "src\Cact
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.ReqnrollSampleTest", "test\Cactus.ReqnrollSampleTest\Cactus.ReqnrollSampleTest.csproj", "{41A6E996-8DE0-45FF-BEC2-134167337AB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.MiniExcelNUnitTest", "Test\Cactus.MiniExcelNUnitTest\Cactus.MiniExcelNUnitTest.csproj", "{E3BA0881-BAFE-426E-B4FF-3B300174883B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.MiniExcelNUnitTest", "test\Cactus.MiniExcelNUnitTest\Cactus.MiniExcelNUnitTest.csproj", "{E3BA0881-BAFE-426E-B4FF-3B300174883B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
