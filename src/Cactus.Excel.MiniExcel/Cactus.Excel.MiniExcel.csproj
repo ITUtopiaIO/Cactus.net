@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MiniExcel" Version="1.31.3" />
+  </ItemGroup>
+
 </Project>

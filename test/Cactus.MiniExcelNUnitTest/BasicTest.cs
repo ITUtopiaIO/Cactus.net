@@ -13,7 +13,7 @@ namespace Cactus.MiniExcelNUnitTest
         }
 
         [Test]
-        public void Test1()
+        public void TestReadExcelFile()
         {
             var Rows = MiniExcel.Query(_path).ToList();
 

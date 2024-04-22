@@ -1,6 +1,6 @@
 ﻿namespace Cactus.Excel.MiniExcel
 {
-    public class Class1
+    public class Test
     {
 
     }
