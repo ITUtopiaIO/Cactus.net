@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiffPlex", "src\DiffPlex\Di
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facts.DiffPlex", "test\Facts.DiffPlex\Facts.DiffPlex.csproj", "{C9246C12-4348-4BB7-B8B7-F6AE0B2CD15F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.CucumberTest", "test\Cactus.CucumberTest\Cactus.CucumberTest.csproj", "{F7ED8699-E0BF-4ABE-9B81-DF91D661AA4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{C9246C12-4348-4BB7-B8B7-F6AE0B2CD15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9246C12-4348-4BB7-B8B7-F6AE0B2CD15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9246C12-4348-4BB7-B8B7-F6AE0B2CD15F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7ED8699-E0BF-4ABE-9B81-DF91D661AA4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7ED8699-E0BF-4ABE-9B81-DF91D661AA4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7ED8699-E0BF-4ABE-9B81-DF91D661AA4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7ED8699-E0BF-4ABE-9B81-DF91D661AA4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{E3BA0881-BAFE-426E-B4FF-3B300174883B} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 		{B57777C8-CDE9-4315-9448-02C8FB4D82D8} = {59476B3B-E737-4F49-8164-04448E7389AA}
 		{C9246C12-4348-4BB7-B8B7-F6AE0B2CD15F} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
+		{F7ED8699-E0BF-4ABE-9B81-DF91D661AA4B} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A757270-A1E5-443E-AAE5-4ECBE36C473A}
