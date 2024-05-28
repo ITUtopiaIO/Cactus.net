@@ -15,9 +15,9 @@ namespace Cactus.ReqnrollTest.StepDefinitions
         [Given("I have an Excel file named {string} in the {string} folder")]
         public void GivenIHaveAnExcelFile(string excelFile, string folder)
         {
-            if (!File.Exists(folder+"\\"+excelFile))
+            if (!File.Exists(Path.Combine(folder,excelFile))) 
             {
-                throw new Exception(" File not found: " + excelFile);
+                throw new FileNotFoundException(" File not found: " + excelFile);
             }
         }
 
