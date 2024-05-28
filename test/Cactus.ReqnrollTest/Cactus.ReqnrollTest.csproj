@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <None Update="Features\SampleTest.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
