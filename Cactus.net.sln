@@ -36,6 +36,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.ExcelConverter", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.ExcelConverter.MiniExcelConverter", "src\Cactus.ExcelConverter.MiniExcelConverter\Cactus.ExcelConverter.MiniExcelConverter.csproj", "{D0463C35-74AB-4958-ABB2-697103F91404}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.MiniExcelConverterTest", "test\Cactus.MiniExcelConverterTest\Cactus.MiniExcelConverterTest.csproj", "{45410137-9F3A-4D52-B7C1-A3D2DD78987A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{D0463C35-74AB-4958-ABB2-697103F91404}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0463C35-74AB-4958-ABB2-697103F91404}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0463C35-74AB-4958-ABB2-697103F91404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45410137-9F3A-4D52-B7C1-A3D2DD78987A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45410137-9F3A-4D52-B7C1-A3D2DD78987A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45410137-9F3A-4D52-B7C1-A3D2DD78987A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45410137-9F3A-4D52-B7C1-A3D2DD78987A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{3981ABD9-6C0C-4652-BF8E-8EFCF4FAD966} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 		{5B976B30-A6D0-4A03-B139-9EEAAB54D29F} = {59476B3B-E737-4F49-8164-04448E7389AA}
 		{D0463C35-74AB-4958-ABB2-697103F91404} = {59476B3B-E737-4F49-8164-04448E7389AA}
+		{45410137-9F3A-4D52-B7C1-A3D2DD78987A} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A757270-A1E5-443E-AAE5-4ECBE36C473A}

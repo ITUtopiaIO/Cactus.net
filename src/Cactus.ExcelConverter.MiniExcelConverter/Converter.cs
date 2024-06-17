@@ -6,16 +6,23 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
     {
         //TODO: to read mutlipe sheets
 
-        string _file = string.Empty;
+        string _excelFile = string.Empty;
+        string _featureFile = string.Empty;
 
-        public bool ConvertToFeature(string FileName) 
+        public bool ConvertExcelToFeature(string excelFileName) 
         {
-                      
-            _file = FileName;
 
-            var Rows = MiniExcel.Query(_file).ToList();
+            _excelFile = excelFileName;
+            _featureFile = excelFileName+".feature";
 
-            return true;
+            var Rows = MiniExcel.Query(_excelFile).ToList();
+
+            using (StreamWriter outputFile = new StreamWriter(_featureFile))
+            {
+                outputFile.WriteLine("Feature: " + _excelFile);
+            }
+
+                return true;
         }
 
         
