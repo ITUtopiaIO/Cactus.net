@@ -13,7 +13,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
         {
 
             _excelFile = excelFileName;
-            _featureFile = excelFileName+".feature";
+            _featureFile = Path.ChangeExtension(excelFileName, ".feature");
 
             var Rows = MiniExcel.Query(_excelFile).ToList();
 
@@ -22,7 +22,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                 outputFile.WriteLine("Feature: " + _excelFile);
             }
 
-                return true;
+            return true;
         }
 
         
