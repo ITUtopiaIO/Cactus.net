@@ -6,7 +6,7 @@ namespace Cactus.MiniExcelNUnitTest
 {
     public class BasicTest  
     {
-        string _path = "TestExcelFile.xlsx";
+        string _file = "TestExcelFile.xlsx";
         
         [SetUp]
         public void Setup()
@@ -16,7 +16,7 @@ namespace Cactus.MiniExcelNUnitTest
         [Test]
         public void TestReadExcelFile()
         {
-            var Rows = MiniExcel.Query(_path).ToList();
+            var Rows = MiniExcel.Query(_file).ToList();
 
 
             Assert.Multiple(() =>
@@ -34,10 +34,10 @@ namespace Cactus.MiniExcelNUnitTest
         public void TestReadExcelSheet()
         {
 
-            var sheetNames = MiniExcel.GetSheetNames(_path);
+            var sheetNames = MiniExcel.GetSheetNames(_file);
             foreach (var sheetName in sheetNames)
             {
-                var rows = MiniExcel.Query(_path, sheetName: sheetName).ToList();
+                var rows = MiniExcel.Query(_file, sheetName: sheetName).ToList();
 
                 if (sheetName == "Sheet2")
                 {

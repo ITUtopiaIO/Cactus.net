@@ -6,16 +6,13 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{DDF2B39C-05B7-4188-99C9-93911FE63DD6}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
+		License.3rd Parties.md = License.3rd Parties.md
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.App", "src\Cactus.App\Cactus.App.csproj", "{0FADE170-E0EE-469F-A951-CDD261CD5549}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{59476B3B-E737-4F49-8164-04448E7389AA}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.Excel", "src\Cactus.Excel\Cactus.Excel.csproj", "{A6BC13B9-3790-4CA9-88FF-27A2F4BF4152}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.Excel.MiniExcel", "src\Cactus.Excel.MiniExcel\Cactus.Excel.MiniExcel.csproj", "{76F9408C-4BF7-4DCF-97BB-6A52849CF6BA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.Cucumber", "src\Cactus.Cucumber\Cactus.Cucumber.csproj", "{1820AA45-D2FC-45D2-9D75-4EAF1B91A5DA}"
 EndProject
@@ -33,7 +30,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facts.DiffPlex", "test\Fact
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.CucumberTest", "test\Cactus.CucumberTest\Cactus.CucumberTest.csproj", "{F7ED8699-E0BF-4ABE-9B81-DF91D661AA4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.ReqnrollTest", "test\Cactus.ReqnrollTest\Cactus.ReqnrollTest.csproj", "{3981ABD9-6C0C-4652-BF8E-8EFCF4FAD966}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.ReqnrollTest", "test\Cactus.ReqnrollTest\Cactus.ReqnrollTest.csproj", "{3981ABD9-6C0C-4652-BF8E-8EFCF4FAD966}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.ExcelConverter", "src\Cactus.ExcelConverter\Cactus.ExcelConverter.csproj", "{5B976B30-A6D0-4A03-B139-9EEAAB54D29F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.ExcelConverter.MiniExcelConverter", "src\Cactus.ExcelConverter.MiniExcelConverter\Cactus.ExcelConverter.MiniExcelConverter.csproj", "{D0463C35-74AB-4958-ABB2-697103F91404}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,14 +46,6 @@ Global
 		{0FADE170-E0EE-469F-A951-CDD261CD5549}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FADE170-E0EE-469F-A951-CDD261CD5549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FADE170-E0EE-469F-A951-CDD261CD5549}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6BC13B9-3790-4CA9-88FF-27A2F4BF4152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6BC13B9-3790-4CA9-88FF-27A2F4BF4152}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6BC13B9-3790-4CA9-88FF-27A2F4BF4152}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6BC13B9-3790-4CA9-88FF-27A2F4BF4152}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76F9408C-4BF7-4DCF-97BB-6A52849CF6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76F9408C-4BF7-4DCF-97BB-6A52849CF6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76F9408C-4BF7-4DCF-97BB-6A52849CF6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76F9408C-4BF7-4DCF-97BB-6A52849CF6BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1820AA45-D2FC-45D2-9D75-4EAF1B91A5DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1820AA45-D2FC-45D2-9D75-4EAF1B91A5DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1820AA45-D2FC-45D2-9D75-4EAF1B91A5DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -85,14 +78,20 @@ Global
 		{3981ABD9-6C0C-4652-BF8E-8EFCF4FAD966}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3981ABD9-6C0C-4652-BF8E-8EFCF4FAD966}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3981ABD9-6C0C-4652-BF8E-8EFCF4FAD966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B976B30-A6D0-4A03-B139-9EEAAB54D29F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B976B30-A6D0-4A03-B139-9EEAAB54D29F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B976B30-A6D0-4A03-B139-9EEAAB54D29F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B976B30-A6D0-4A03-B139-9EEAAB54D29F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0463C35-74AB-4958-ABB2-697103F91404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0463C35-74AB-4958-ABB2-697103F91404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0463C35-74AB-4958-ABB2-697103F91404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0463C35-74AB-4958-ABB2-697103F91404}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0FADE170-E0EE-469F-A951-CDD261CD5549} = {59476B3B-E737-4F49-8164-04448E7389AA}
-		{A6BC13B9-3790-4CA9-88FF-27A2F4BF4152} = {59476B3B-E737-4F49-8164-04448E7389AA}
-		{76F9408C-4BF7-4DCF-97BB-6A52849CF6BA} = {59476B3B-E737-4F49-8164-04448E7389AA}
 		{1820AA45-D2FC-45D2-9D75-4EAF1B91A5DA} = {59476B3B-E737-4F49-8164-04448E7389AA}
 		{77CC94C6-9490-47E6-BEE3-72C4DF3A00F7} = {59476B3B-E737-4F49-8164-04448E7389AA}
 		{41A6E996-8DE0-45FF-BEC2-134167337AB7} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
@@ -101,6 +100,8 @@ Global
 		{C9246C12-4348-4BB7-B8B7-F6AE0B2CD15F} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 		{F7ED8699-E0BF-4ABE-9B81-DF91D661AA4B} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 		{3981ABD9-6C0C-4652-BF8E-8EFCF4FAD966} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
+		{5B976B30-A6D0-4A03-B139-9EEAAB54D29F} = {59476B3B-E737-4F49-8164-04448E7389AA}
+		{D0463C35-74AB-4958-ABB2-697103F91404} = {59476B3B-E737-4F49-8164-04448E7389AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A757270-A1E5-443E-AAE5-4ECBE36C473A}
