@@ -15,11 +15,16 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
             _excelFile = excelFileName;
             _featureFile = Path.ChangeExtension(excelFileName, ".feature");
 
-            var Rows = MiniExcel.Query(_excelFile).ToList();
+            //var Rows = MiniExcel.Query(_excelFile).ToList();
 
             using (StreamWriter outputFile = new StreamWriter(_featureFile))
             {
-                outputFile.WriteLine("Feature: " + _excelFile);
+
+                var sheetNames = MiniExcel.GetSheetNames(_excelFile);
+                foreach (var sheetName in sheetNames)
+                {
+                    outputFile.WriteLine("Feature: " + sheetName);
+                }
             }
 
             return true;
