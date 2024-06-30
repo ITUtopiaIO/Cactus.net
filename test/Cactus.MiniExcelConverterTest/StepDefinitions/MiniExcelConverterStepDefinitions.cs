@@ -1,3 +1,4 @@
+using Cactus.CucumberTest;
 using Cactus.ExcelConverter.MiniExcelConverter;
 using NUnit.Framework;
 using System.Security.Cryptography.X509Certificates;
@@ -61,11 +62,10 @@ namespace Cactus.MiniExcelConverterTest.StepDefinitions
         [Then("the feature file should match with {string} in the {string} folder")]
         public void ThenTheFeatureFileShouldMatchWith(string expectedFile, string folder)
         {
+            FileDiff fileDiff = new FileDiff();
             string _expectedFile = Path.Combine(folder, expectedFile);
-            //string actualFile = Path.Combine(folder, Path.GetFileName(_featureFile));
-            string expected = File.ReadAllText(_expectedFile);
-            string feature = File.ReadAllText(_featureFile);
-            Assert.AreEqual(expected, feature);
+            var result = fileDiff.FileAreSame(_featureFile, _expectedFile);
+            Assert.True(result);
         }
 
         //private string RandomizeFileName(string fileName)
