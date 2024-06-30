@@ -7,7 +7,7 @@ namespace Cactus.MiniExcelConverterTest.StepDefinitions
     [Binding]
     public sealed class MiniExcelConverterStepDefinitions
     {
-        const string DEFAULT_FOLDER = "Features";
+        readonly string DEFAULT_FOLDER = "Features";
 
         //string _GUID = string.Empty;
         string _excelFile = string.Empty;
