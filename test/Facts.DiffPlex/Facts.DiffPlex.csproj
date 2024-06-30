@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DiffPlex\DiffPlex.csproj" />
+    <ProjectReference Include="..\DiffPlex\DiffPlex.csproj" />
   </ItemGroup>
 
   <ItemGroup>
