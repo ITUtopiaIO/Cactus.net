@@ -1,5 +1,6 @@
 using NUnit.Framework.Internal;
 using DiffPlex;
+using System.Text;
 
 namespace Cactus.CucumberTest
 {
@@ -7,11 +8,22 @@ namespace Cactus.CucumberTest
     {
         public bool FileAreSame(string outputFile, string expectedFile)
         {
-            string output = File.ReadAllText(outputFile);
-            string expected = File.ReadAllText(expectedFile);
+            var outputLines = File.ReadAllLines(outputFile);
+            StringBuilder outputData = new StringBuilder();
+            foreach (string value in outputLines)
+            {
+                outputData.AppendLine(value);
+            }
+
+            var expectedLines = File.ReadAllLines(expectedFile);
+            StringBuilder expectedData = new StringBuilder();
+            foreach (string value in expectedLines)
+            {
+                expectedData.AppendLine(value);
+            }
 
             Differ differ = new Differ();
-            var diff = differ.CreateLineDiffs(output, expected, true);
+            var diff = differ.CreateLineDiffs(outputData.ToString(), expectedData.ToString(), true);
             return (diff.DiffBlocks.Count == 0);
         }
 
