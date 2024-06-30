@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+    <ReqnrollFeatureFiles Remove="bin\**" />
+    <ReqnrollObsoleteCodeBehindFiles Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageReference Include="Reqnroll.NUnit" Version="2.0.2" />
     <PackageReference Include="nunit" Version="3.14.0" />
