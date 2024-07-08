@@ -44,9 +44,16 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                             if (cell.Value != null)
                             {
                                 cellData = cell.Value.ToString();
-                                if ("A".Equals(cell.Key.ToString()) && SCENARIO.Equals(cellData))
+                                if ("A".Equals(cell.Key.ToString()))
                                 {
-                                    cellData += COLON;
+                                    if (SCENARIO.Equals(cellData))
+                                    { 
+                                        cellData += COLON;
+                                    }
+                                    else
+                                    {
+                                        cellData = "\t" + cellData;
+                                    }
                                 }
                             }
                             rowData += cellData +" ";
