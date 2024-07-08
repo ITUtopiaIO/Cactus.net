@@ -48,15 +48,15 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                                 {
                                     if (SCENARIO.Equals(cellData))
                                     { 
-                                        cellData += COLON;
+                                        cellData = cellData.Trim() + COLON;
                                     }
                                     else
                                     {
-                                        cellData = "\t" + cellData;
+                                        cellData = "\t" + cellData.Trim();
                                     }
                                 }
                             }
-                            rowData += cellData +" ";
+                            rowData += cellData.Trim() +" ";
                         }
                         outputFile.WriteLine(rowData);
                     }
