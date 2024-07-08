@@ -20,7 +20,7 @@ namespace Cactus.CucumberTest
 
 
         [Test]
-        public void Test2()
+        public void OutputIsAsExpected()
         {
             FileDiff fileDiff = new FileDiff();
             string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.output");
@@ -30,12 +30,43 @@ namespace Cactus.CucumberTest
         }
 
         [Test]
-        public void Test1()
+        public void OutputIsNotAsExpected()
         {
-            Differ differ = new Differ();
-            var diff = differ.CreateLineDiffs("Hello   world!", "Hello world!", true);
-            Assert.NotNull(diff);
-            Assert.That(diff.DiffBlocks.Count, Is.EqualTo(1));
+            FileDiff fileDiff = new FileDiff();
+            string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.wrongoutput");
+            String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
+            var result = fileDiff.FileAreSame(outputFile, expectedFile);
+            Assert.False(result);
+        }
+
+        [Test]
+        public void OutputIsAsExpectedExcludingEmptyLines()
+        {
+            FileDiff fileDiff = new FileDiff();
+            string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.outputnoemptyline");
+            String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
+            var result = fileDiff.FileAreSame(outputFile, expectedFile, ignoreEmptyLine:false);
+            Assert.False(result);
+
+            result = fileDiff.FileAreSame(outputFile, expectedFile, ignoreEmptyLine:true);
+            Assert.True(result);
+
+            //Empty line is default to be ignored
+            result = fileDiff.FileAreSame(outputFile, expectedFile);
+            Assert.True(result);
+        }
+
+        [Test]
+        public void OutputIsAsExpectedExcludingCommentLines()
+        {
+            FileDiff fileDiff = new FileDiff();
+            string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.outputnocommentline");
+            String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
+            var result = fileDiff.FileAreSame(outputFile, expectedFile);
+            Assert.False(result);
+
+            result = fileDiff.FileAreSame(outputFile, expectedFile, ignoreCommentLine: true);
+            Assert.True(result);
         }
     }
 

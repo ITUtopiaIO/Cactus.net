@@ -6,12 +6,20 @@ namespace Cactus.CucumberTest
 {
     public class FileDiff
     {
-        public bool FileAreSame(string outputFile, string expectedFile)
+        public bool FileAreSame(string outputFile, string expectedFile, bool ignoreEmptyLine=true, bool ignoreCommentLine=false)
         {
             var outputLines = File.ReadAllLines(outputFile);
             StringBuilder outputData = new StringBuilder();
             foreach (string value in outputLines)
             {
+                if (ignoreEmptyLine && string.IsNullOrWhiteSpace(value))
+                {
+                    continue;
+                }
+                if (ignoreCommentLine && value.Trim().StartsWith("#"))
+                {
+                    continue;
+                }
                 outputData.AppendLine(value);
             }
 
@@ -19,6 +27,14 @@ namespace Cactus.CucumberTest
             StringBuilder expectedData = new StringBuilder();
             foreach (string value in expectedLines)
             {
+                if (ignoreEmptyLine && string.IsNullOrWhiteSpace(value))
+                {
+                    continue;
+                }
+                if (ignoreCommentLine && value.Trim().StartsWith("#"))
+                {
+                    continue;
+                }
                 expectedData.AppendLine(value);
             }
 

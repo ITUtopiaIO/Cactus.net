@@ -22,10 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Files\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Update="Files\SampleTest.outputnocommentline">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\SampleTest.outputnoemptyline">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\SampleTest.wrongoutput">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Files\SampleTest.exp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
