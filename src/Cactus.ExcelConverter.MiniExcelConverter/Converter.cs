@@ -24,11 +24,14 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
             using (StreamWriter outputFile = new StreamWriter(_featureFile))
             {
                 outputFile.WriteLine(DISCLAIM);
+                outputFile.WriteLine();
                 outputFile.WriteLine("Feature: " + Path.GetFileNameWithoutExtension(_excelFile));
+
 
                 var sheetNames = MiniExcel.GetSheetNames(_excelFile);
                 foreach (var sheetName in sheetNames)
                 {
+                    outputFile.WriteLine();
                     outputFile.WriteLine("# " + sheetName);
 
                     var rows = MiniExcel.Query(_excelFile, sheetName: sheetName).ToList();
