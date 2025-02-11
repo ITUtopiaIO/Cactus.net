@@ -28,6 +28,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Cactus.ExcelConverter\Cactus.ExcelConverter.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Features\SampleTest.ExpectedFeature">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Features\SampleTest.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

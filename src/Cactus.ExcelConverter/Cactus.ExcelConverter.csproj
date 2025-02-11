@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cactus.ExcelConverter.MiniExcelConverter\Cactus.ExcelConverter.MiniExcelConverter.csproj" />
+  </ItemGroup>
+
 </Project>

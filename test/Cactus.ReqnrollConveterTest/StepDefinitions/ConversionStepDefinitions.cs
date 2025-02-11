@@ -5,6 +5,7 @@ namespace Cactus.ReqnrollTest.StepDefinitions
     {
         const string DEFAULT_FOLDER = "Features";
 
+        string _excelFile = string.Empty;
 
         [Given("I have an Excel file named {string}")]
         public void GivenIHaveAnExcelFile(string excelFile)
@@ -15,16 +16,22 @@ namespace Cactus.ReqnrollTest.StepDefinitions
         [Given("I have an Excel file named {string} in the {string} folder")]
         public void GivenIHaveAnExcelFile(string excelFile, string folder)
         {
-            if (!File.Exists(Path.Combine(folder,excelFile))) 
+            if (File.Exists(Path.Combine(folder,excelFile))) 
+            {
+                _excelFile = Path.Combine(folder, excelFile);
+            }
+            else
             {
                 throw new FileNotFoundException(" File not found: " + excelFile);
             }
+
         }
 
         [When("I convert the Excel file to a feature file")]
         public void WhenIConvertTheExcelFileToAFeatureFile()
         {
-            //TODO:
+            ExcelConverter.Converter converter = new ExcelConverter.Converter();
+            converter.ConvertExcelToFeature(_excelFile);
         }
 
         [When("I compare the converted feature file with {string}")]
