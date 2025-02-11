@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net35;net40;netstandard1.0;netstandard2.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net35;net40;netstandard1.0;netstandard2.0;net6.0;net8.0</TargetFrameworks>
     <Version>1.7.2</Version>
     <PackageTags>diff</PackageTags>
     <Description>DiffPlex is a diffing library that allows you to programatically create text diffs. DiffPlex is a fast and tested library.</Description>
@@ -10,6 +10,6 @@
   <ItemGroup>
     <PackageReference Condition="'$(TargetFramework)' == 'net40'" Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <PackageReference Condition="'$(TargetFramework)' == 'net35'" Include="jnm2.ReferenceAssemblies.net35" Version="1.0.1" PrivateAssets="all" />
-    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
