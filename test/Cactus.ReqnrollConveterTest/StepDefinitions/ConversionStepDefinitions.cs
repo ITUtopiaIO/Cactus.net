@@ -1,3 +1,6 @@
+using Cactus.CucumberTest;
+using NUnit.Framework;
+
 namespace Cactus.ReqnrollTest.StepDefinitions
 {
     [Binding]
@@ -6,6 +9,7 @@ namespace Cactus.ReqnrollTest.StepDefinitions
         const string DEFAULT_FOLDER = "Features";
 
         string _excelFile = string.Empty;
+        string _featureFile = string.Empty;
 
         [Given("I have an Excel file named {string}")]
         public void GivenIHaveAnExcelFile(string excelFile)
@@ -31,19 +35,18 @@ namespace Cactus.ReqnrollTest.StepDefinitions
         public void WhenIConvertTheExcelFileToAFeatureFile()
         {
             ExcelConverter.Converter converter = new ExcelConverter.Converter();
-            converter.ConvertExcelToFeature(_excelFile);
+            _featureFile = converter.ConvertExcelToFeature(_excelFile);
         }
 
-        [When("I compare the converted feature file with {string}")]
-        public void WhenICompareTheConvertedFeatureFileWith(string featureFile)
+        [Then("My converted feature file should match with {string}")]
+        public void MyConvertedFeatureFileShouldMatchWith(string expectedFile)
         {
-            //TODO:
-        }
+            string _expectedFile = Path.Combine(DEFAULT_FOLDER, expectedFile);
+            FileDiff fileDiff = new FileDiff();
+            var result = fileDiff.FileAreSame(_featureFile, _expectedFile, ignoreCommentLine: true);
+            Assert.That(result, Is.True);
 
-        [Then("I should find these two files match")]
-        public void ThenIShoudlFindTheseTwoFilesMatch()
-        {
-            //TODO:
         }
+        
     }
 }

@@ -13,7 +13,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
         string _excelFile = string.Empty;
         string _featureFile = string.Empty;
 
-        public bool ConvertExcelToFeature(string excelFileName) 
+        public string ConvertExcelToFeature(string excelFileName) 
         {
 
             _excelFile = excelFileName;
@@ -63,7 +63,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                 }
             }
 
-            return true;
+            return _featureFile;
         }
 
         

@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Cactus.ExcelConverter\Cactus.ExcelConverter.csproj" />
+    <ProjectReference Include="..\Cactus.CucumberTest\Cactus.CucumberTest.csproj" />
   </ItemGroup>
 
   <ItemGroup>

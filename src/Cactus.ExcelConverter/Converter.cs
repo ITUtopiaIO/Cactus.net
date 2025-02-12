@@ -5,7 +5,7 @@ namespace Cactus.ExcelConverter
 {
     public class Converter
     {
-        public bool ConvertExcelToFeature(string excelFileName)
+        public string ConvertExcelToFeature(string excelFileName)
         {
 
             MiniExcelConverter.Converter miniExcelConverter = new MiniExcelConverter.Converter();
