@@ -43,8 +43,8 @@ namespace Cactus.ReqnrollTest.StepDefinitions
         {
             string _expectedFile = Path.Combine(DEFAULT_FOLDER, expectedFile);
             FileDiff fileDiff = new FileDiff();
-            var result = fileDiff.FileAreSame(_featureFile, _expectedFile, ignoreCommentLine: true);
-            Assert.That(result, Is.True);
+            string result = fileDiff.GetFileDiff(_featureFile, _expectedFile, ignoreCommentLine: true);
+            Assert.That(result, Is.Empty);
 
         }
         

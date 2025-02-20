@@ -25,8 +25,8 @@ namespace Cactus.CucumberTest
             FileDiff fileDiff = new FileDiff();
             string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.output");
             String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
-            var result = fileDiff.FileAreSame(outputFile, expectedFile);
-            Assert.True(result);
+            string result = fileDiff.GetFileDiff(outputFile, expectedFile);
+            Assert.IsEmpty(result);
         }
 
         [Test]
@@ -35,8 +35,8 @@ namespace Cactus.CucumberTest
             FileDiff fileDiff = new FileDiff();
             string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.wrongoutput");
             String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
-            var result = fileDiff.FileAreSame(outputFile, expectedFile);
-            Assert.False(result);
+            string result = fileDiff.GetFileDiff(outputFile, expectedFile);
+            Assert.IsNotEmpty(result);
         }
 
         [Test]
@@ -45,15 +45,15 @@ namespace Cactus.CucumberTest
             FileDiff fileDiff = new FileDiff();
             string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.outputnoemptyline");
             String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
-            var result = fileDiff.FileAreSame(outputFile, expectedFile, ignoreEmptyLine:false);
-            Assert.False(result);
+            string result = fileDiff.GetFileDiff(outputFile, expectedFile, ignoreEmptyLine:false);
+            Assert.IsNotEmpty(result);
 
-            result = fileDiff.FileAreSame(outputFile, expectedFile, ignoreEmptyLine:true);
-            Assert.True(result);
+            result = fileDiff.GetFileDiff(outputFile, expectedFile, ignoreEmptyLine:true);
+            Assert.IsEmpty(result);
 
             //Empty line is default to be ignored
-            result = fileDiff.FileAreSame(outputFile, expectedFile);
-            Assert.True(result);
+            result = fileDiff.GetFileDiff(outputFile, expectedFile);
+            Assert.IsEmpty(result);
         }
 
         [Test]
@@ -62,11 +62,11 @@ namespace Cactus.CucumberTest
             FileDiff fileDiff = new FileDiff();
             string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.outputnocommentline");
             String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
-            var result = fileDiff.FileAreSame(outputFile, expectedFile);
-            Assert.False(result);
+            string result = fileDiff.GetFileDiff(outputFile, expectedFile);
+            Assert.IsNotEmpty(result);
 
-            result = fileDiff.FileAreSame(outputFile, expectedFile, ignoreCommentLine: true);
-            Assert.True(result);
+            result = fileDiff.GetFileDiff(outputFile, expectedFile, ignoreCommentLine: true);
+            Assert.IsEmpty(result);
         }
     }
 

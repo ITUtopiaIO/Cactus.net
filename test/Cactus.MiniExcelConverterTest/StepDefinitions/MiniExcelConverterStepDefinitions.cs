@@ -64,8 +64,8 @@ namespace Cactus.MiniExcelConverterTest.StepDefinitions
         {
             FileDiff fileDiff = new FileDiff();
             string _expectedFile = Path.Combine(folder, expectedFile);
-            var result = fileDiff.FileAreSame(_featureFile, _expectedFile, ignoreEmptyLine:false);
-            Assert.True(result);
+            string result = fileDiff.GetFileDiff(_featureFile, _expectedFile, ignoreEmptyLine:false);
+            Assert.IsEmpty(result);
         }
 
         //private string RandomizeFileName(string fileName)

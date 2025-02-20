@@ -6,7 +6,7 @@ namespace Cactus.CucumberTest
 {
     public class FileDiff
     {
-        public bool FileAreSame(string outputFile, string expectedFile, bool ignoreEmptyLine=true, bool ignoreCommentLine=false)
+        public string GetFileDiff(string outputFile, string expectedFile, bool ignoreEmptyLine=true, bool ignoreCommentLine=false)
         {
             var outputLines = File.ReadAllLines(outputFile);
             StringBuilder outputData = new StringBuilder();
@@ -40,7 +40,14 @@ namespace Cactus.CucumberTest
 
             Differ differ = new Differ();
             var diff = differ.CreateLineDiffs(outputData.ToString(), expectedData.ToString(), true);
-            return (diff.DiffBlocks.Count == 0);
+            if (diff.DiffBlocks.Count == 0)
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return "It's Different";
+            }
         }
 
     }
