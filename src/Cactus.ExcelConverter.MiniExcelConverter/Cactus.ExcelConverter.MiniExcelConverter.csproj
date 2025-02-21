@@ -10,4 +10,8 @@
     <PackageReference Include="MiniExcel" Version="1.32.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cactus.Cucumber\Cactus.Cucumber.csproj" />
+  </ItemGroup>
+
 </Project>

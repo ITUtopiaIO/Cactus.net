@@ -1,6 +1,7 @@
 using NUnit.Framework.Internal;
 using DiffPlex;
 using System.Text;
+using Cactus.Cucumber;
 
 namespace Cactus.CucumberTest
 {
@@ -12,6 +13,10 @@ namespace Cactus.CucumberTest
             StringBuilder outputData = new StringBuilder();
             foreach (string value in outputLines)
             {
+                if (value.Trim().StartsWith(Cucumber.Common.DISCLAIM))
+                {
+                    continue;
+                }
                 if (ignoreEmptyLine && string.IsNullOrWhiteSpace(value))
                 {
                     continue;
@@ -27,6 +32,10 @@ namespace Cactus.CucumberTest
             StringBuilder expectedData = new StringBuilder();
             foreach (string value in expectedLines)
             {
+                if (value.Trim().StartsWith(Cucumber.Common.DISCLAIM))
+                {
+                    continue;
+                }
                 if (ignoreEmptyLine && string.IsNullOrWhiteSpace(value))
                 {
                     continue;

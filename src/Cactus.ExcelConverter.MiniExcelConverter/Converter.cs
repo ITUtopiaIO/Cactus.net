@@ -1,4 +1,5 @@
 ﻿using MiniExcelLibs;
+using Cactus.Cucumber;
 
 namespace Cactus.ExcelConverter.MiniExcelConverter
 {
@@ -6,7 +7,6 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
     {
         //TODO: to read mutlipe sheets
 
-        readonly string DISCLAIM = "# This feature file was auto generated from Excel by Cactus.net(https://github.com/ITUtopiaIO/Cactus.net)";
         readonly string SCENARIO = "Scenario";
         readonly string COLON = ":";
 
@@ -23,7 +23,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
 
             using (StreamWriter outputFile = new StreamWriter(_featureFile))
             {
-                outputFile.WriteLine(DISCLAIM+" at "+DateTime.Now.ToString());
+                outputFile.WriteLine(Cucumber.Common.DISCLAIM+" at "+DateTime.Now.ToString());
                 outputFile.WriteLine();
                 outputFile.WriteLine("Feature: " + Path.GetFileNameWithoutExtension(_excelFile));
 

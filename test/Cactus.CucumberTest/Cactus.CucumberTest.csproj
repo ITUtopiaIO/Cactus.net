@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Cactus.Cucumber\Cactus.Cucumber.csproj" />
     <ProjectReference Include="..\DiffPlex\DiffPlex.csproj" />
   </ItemGroup>
 
