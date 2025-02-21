@@ -23,7 +23,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
 
             using (StreamWriter outputFile = new StreamWriter(_featureFile))
             {
-                outputFile.WriteLine(DISCLAIM);
+                outputFile.WriteLine(DISCLAIM+" at "+DateTime.Now.ToString());
                 outputFile.WriteLine();
                 outputFile.WriteLine("Feature: " + Path.GetFileNameWithoutExtension(_excelFile));
 

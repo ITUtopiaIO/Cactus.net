@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Cactus.ReqnrollSampleTest.Features
+namespace Cactus.ReqnrollVerificationTest.Features
 {
     using Reqnroll;
     using System;

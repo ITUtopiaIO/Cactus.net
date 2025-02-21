@@ -47,6 +47,12 @@ namespace Cactus.ReqnrollTest.StepDefinitions
             Assert.That(result, Is.Empty);
 
         }
-        
+
+        [Then("I copy the converted feature file to {string}")]
+        public void ICopyTheConvertedFeatureFileTo(string folder)
+        {
+            File.Copy(_featureFile, Path.Combine(folder, Path.GetFileName(_featureFile)), true);
+        }
+
     }
 }
