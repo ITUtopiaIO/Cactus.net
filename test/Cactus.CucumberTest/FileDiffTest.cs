@@ -26,7 +26,7 @@ namespace Cactus.CucumberTest
             string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.output");
             String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
             string result = fileDiff.GetFileDiff(outputFile, expectedFile);
-            Assert.IsEmpty(result);
+            Assert.That(result, Is.Empty);
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace Cactus.CucumberTest
             string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.wrongoutput");
             String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
             string result = fileDiff.GetFileDiff(outputFile, expectedFile);
-            Assert.IsNotEmpty(result);
+            Assert.That(result, Is.Not.Empty);
         }
 
         [Test]
@@ -46,14 +46,14 @@ namespace Cactus.CucumberTest
             string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.outputnoemptyline");
             String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
             string result = fileDiff.GetFileDiff(outputFile, expectedFile, ignoreEmptyLine:false);
-            Assert.IsNotEmpty(result);
+            Assert.That(result, Is.Not.Empty);
 
             result = fileDiff.GetFileDiff(outputFile, expectedFile, ignoreEmptyLine:true);
-            Assert.IsEmpty(result);
+            Assert.That(result, Is.Empty);
 
             //Empty line is default to be ignored
             result = fileDiff.GetFileDiff(outputFile, expectedFile);
-            Assert.IsEmpty(result);
+            Assert.That(result, Is.Empty);
         }
 
         [Test]
@@ -63,10 +63,10 @@ namespace Cactus.CucumberTest
             string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.outputnocommentline");
             String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
             string result = fileDiff.GetFileDiff(outputFile, expectedFile);
-            Assert.IsNotEmpty(result);
+            Assert.That(result, Is.Not.Empty);
 
             result = fileDiff.GetFileDiff(outputFile, expectedFile, ignoreCommentLine: true);
-            Assert.IsEmpty(result);
+            Assert.That(result, Is.Empty);
         }
     }
 

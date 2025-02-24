@@ -48,7 +48,7 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
             //TODO: implement assert (verification) logic
 
             //throw new PendingStepException();
-            Assert.AreEqual(result, _result);
+            Assert.That(_result, Is.EqualTo(result));
         }
     }
 }

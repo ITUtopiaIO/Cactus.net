@@ -50,7 +50,7 @@ namespace Cactus.MiniExcelConverterTest.StepDefinitions
         public void ThenIShouldHaveAFeatureFile(string featureFile, string folder)
         {
             _featureFile = Path.Combine(folder, featureFile);
-            Assert.IsTrue(File.Exists(_featureFile));
+            Assert.That(File.Exists(_featureFile), Is.True);
         }
 
         [Then("the feature file should match with {string}")]
@@ -65,7 +65,7 @@ namespace Cactus.MiniExcelConverterTest.StepDefinitions
             FileDiff fileDiff = new FileDiff();
             string _expectedFile = Path.Combine(folder, expectedFile);
             string result = fileDiff.GetFileDiff(_featureFile, _expectedFile, ignoreEmptyLine:false);
-            Assert.IsEmpty(result);
+            Assert.That(result, Is.Empty);
         }
 
         //private string RandomizeFileName(string fileName)
