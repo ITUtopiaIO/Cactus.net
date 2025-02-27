@@ -42,7 +42,13 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
             _result = _firstNumber + _secondNumber;
         }
 
-        [Then("the result should be (.*)")]
+        [When("I subtract the second number from the first number")]
+        public void WhenISubtractTheSecondNumberFromTheFirstNumber()
+        {
+            _result = _firstNumber - _secondNumber;
+        }
+
+            [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int result)
         {
             //TODO: implement assert (verification) logic

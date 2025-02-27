@@ -1,4 +1,4 @@
-Feature: Calculator
+Feature: OriginalCalculator
 
 Simple calculator for adding two numbers
 
