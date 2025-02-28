@@ -33,6 +33,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Features\BasicSample.ExpectedFeature">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Features\BasicSample.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Features\SampleTest.ExpectedFeature">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

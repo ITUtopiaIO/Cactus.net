@@ -32,7 +32,12 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                 foreach (var sheetName in sheetNames)
                 {
                     outputFile.WriteLine();
-                    outputFile.WriteLine("# " + sheetName);
+                    outputFile.WriteLine("#Sheet: " + sheetName);
+
+                    if (sheetName.StartsWith("_"))
+                    {
+                        continue;
+                    }
 
                     var rows = MiniExcel.Query(_excelFile, sheetName: sheetName).ToList();
                     foreach (var row in rows)
