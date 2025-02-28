@@ -1,4 +1,4 @@
-Feature: Basic Sample Conversion Test
+Feature: Sample Conversion Test
 
 Convert sample test form excel to cucumber feature file
 

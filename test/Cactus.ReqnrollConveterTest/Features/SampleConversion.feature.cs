@@ -20,18 +20,18 @@ namespace Cactus.ReqnrollConverterTest.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Basic Sample Conversion Test")]
+    [NUnit.Framework.DescriptionAttribute("Sample Conversion Test")]
     [NUnit.Framework.FixtureLifeCycleAttribute(NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    public partial class BasicSampleConversionTestFeature
+    public partial class SampleConversionTestFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Basic Sample Conversion Test", "Convert sample test form excel to cucumber feature file", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Sample Conversion Test", "Convert sample test form excel to cucumber feature file", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
-#line 1 "BasicSampleConversion.feature"
+#line 1 "SampleConversion.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]

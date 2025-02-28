@@ -39,6 +39,12 @@
     <None Update="Features\BasicSample.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Features\DataGridSample.ExpectedFeature">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Features\DataGridSample.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Features\SampleTest.ExpectedFeature">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
