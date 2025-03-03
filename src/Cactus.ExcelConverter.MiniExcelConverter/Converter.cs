@@ -9,6 +9,8 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
 
         readonly string SCENARIO = "Scenario";
         readonly string COLON = ":";
+        readonly string FIRST_COLUMN = "A";
+        readonly string SECOND_COLUMN = "B";
 
         string _excelFile = string.Empty;
         string _featureFile = string.Empty;
@@ -43,16 +45,26 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                     foreach (var row in rows)
                     {
                         string rowData = string.Empty;
+
+                        bool isTableRow = false;
+                        if (String.IsNullOrEmpty(Convert.ToString(row.A)) && !String.IsNullOrEmpty(Convert.ToString(row.B)))
+                        {
+                            isTableRow = true;
+                        }
+
                         foreach (var cell in row)
                         {
                             string cellData = string.Empty;
+
+
                             if (cell.Value != null)
                             {
                                 cellData = cell.Value.ToString();
-                                if ("A".Equals(cell.Key.ToString()))
+
+                                if (FIRST_COLUMN.Equals(cell.Key.ToString()))
                                 {
                                     if (SCENARIO.Equals(cellData))
-                                    { 
+                                    {
                                         cellData = cellData.Trim() + COLON;
                                     }
                                     else
@@ -60,8 +72,20 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                                         cellData = "\t" + cellData.Trim();
                                     }
                                 }
+
+                                //Table data will not start w/ first column
+                                if (isTableRow)
+                                {
+                                    cellData = "| " + cellData.Trim() + " ";
+                                }   
                             }
-                            rowData += cellData.Trim() +" ";
+
+                            rowData += cellData.Trim() + " ";
+                        }
+
+                        if (isTableRow)
+                        {
+                            rowData += " |";
                         }
                         outputFile.WriteLine(rowData);
                     }

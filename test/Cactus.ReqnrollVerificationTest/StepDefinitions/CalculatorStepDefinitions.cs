@@ -33,7 +33,17 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
             _secondNumber = number;
         }
 
-        [When("the two numbers are added")]
+        [Given("I have following two numbers")]
+        public void GivenIHaveFollowingTwoNumbers(Table table)
+        {
+            foreach(var row in table.Rows)
+            {
+                _firstNumber = int.Parse(row["First Number"]);
+                _secondNumber = int.Parse(row["Second Number"]);
+            }
+        }
+
+            [When("the two numbers are added")]
         public void WhenTheTwoNumbersAreAdded()
         {
             //TODO: implement act (action) logic

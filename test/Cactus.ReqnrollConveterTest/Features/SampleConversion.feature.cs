@@ -83,12 +83,12 @@ namespace Cactus.ReqnrollConverterTest.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Sample Test Conversion")]
-        public async System.Threading.Tasks.Task SampleTestConversion()
+        [NUnit.Framework.DescriptionAttribute("Basic Sample Conversion")]
+        public async System.Threading.Tasks.Task BasicSampleConversion()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Sample Test Conversion", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Basic Sample Conversion", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -109,6 +109,40 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.ThenAsync("My converted feature file should match with \"BasicSample.ExpectedFeature\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 9
+ await testRunner.ThenAsync("I copy the converted feature file to \"../../../../Cactus.ReqnrollVerificationTest" +
+                        "/Features\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Data Grid Sample Conversion")]
+        public async System.Threading.Tasks.Task DataGridSampleConversion()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Data Grid Sample Conversion", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 12
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 13
+ await testRunner.GivenAsync("I have an Excel file named \"DataGridSample.xlsx\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 14
+ await testRunner.WhenAsync("I convert the Excel file to a feature file", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 15
+ await testRunner.ThenAsync("My converted feature file should match with \"DataGridSample.ExpectedFeature\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 16
  await testRunner.ThenAsync("I copy the converted feature file to \"../../../../Cactus.ReqnrollVerificationTest" +
                         "/Features\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
