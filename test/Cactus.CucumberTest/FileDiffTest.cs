@@ -39,6 +39,27 @@ namespace Cactus.CucumberTest
             Assert.That(result, Is.Not.Empty);
         }
 
+
+        [Test]
+        public void OutputHasExtraLines()
+        {
+            FileDiff fileDiff = new FileDiff();
+            string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.outputextralines");
+            String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
+            string result = fileDiff.GetFileDiff(outputFile, expectedFile, ignoreEmptyLine: false);
+            Assert.That(result, Is.Not.Empty);
+        }
+
+        [Test]
+        public void OutputMissingLines()
+        {
+            FileDiff fileDiff = new FileDiff();
+            string outputFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.outputmissinglines");
+            String expectedFile = Path.Combine(DEFAULT_FOLDER, "SampleTest.exp");
+            string result = fileDiff.GetFileDiff(outputFile, expectedFile, ignoreEmptyLine: false);
+            Assert.That(result, Is.Not.Empty);
+        }
+
         [Test]
         public void OutputIsAsExpectedExcludingEmptyLines()
         {
@@ -67,6 +88,21 @@ namespace Cactus.CucumberTest
 
             result = fileDiff.GetFileDiff(outputFile, expectedFile, ignoreCommentLine: true);
             Assert.That(result, Is.Empty);
+        }
+
+        [Test]
+        public void SimplifyTableLineTest()
+        {
+            FileDiff fileDiff = new FileDiff();
+            Assert.That(fileDiff.SimplifyTableLine("|"), Is.EqualTo("|"));
+            Assert.That(fileDiff.SimplifyTableLine("Hello"), Is.EqualTo("Hello"));
+            Assert.That(fileDiff.SimplifyTableLine("Hello|"), Is.EqualTo("Hello|"));
+            Assert.That(fileDiff.SimplifyTableLine("|Hello"), Is.EqualTo("|Hello"));
+            Assert.That(fileDiff.SimplifyTableLine("|Hello|"), Is.EqualTo("|Hello|"));
+            Assert.That(fileDiff.SimplifyTableLine("|Hello|World|"), Is.EqualTo("|Hello|World|"));
+            Assert.That(fileDiff.SimplifyTableLine("|Hello||World|"), Is.EqualTo("|Hello||World|"));
+            Assert.That(fileDiff.SimplifyTableLine("| Hello | | World |"), Is.EqualTo("|Hello||World|"));
+
         }
     }
 

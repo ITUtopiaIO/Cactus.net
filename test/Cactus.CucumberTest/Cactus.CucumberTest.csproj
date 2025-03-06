@@ -29,6 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Files\SampleTest.outputmissinglines">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\SampleTest.outputextralines">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Files\SampleTest.outputnocommentline">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

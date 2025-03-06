@@ -13,3 +13,9 @@ Scenario: Convert a simple Excel with space file to a feature file
 	When I convert the Excel file to a feature file
 	Then I should have a feature file "SampleTestWSpace.feature"
 	And the feature file should match with "SampleTestWSpace.exp"
+
+Scenario: Convert a Excel with DataGrid to a feature file
+	Given I have an Excel file "DataGrid.xlsx"
+	When I convert the Excel file to a feature file
+	Then I should have a feature file "DataGrid.feature"
+	And the feature file should match with "DataGrid.exp"

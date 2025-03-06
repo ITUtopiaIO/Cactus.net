@@ -76,7 +76,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                                 //Table data will not start w/ first column
                                 if (isTableRow)
                                 {
-                                    cellData = "| " + cellData.Trim() + " ";
+                                    cellData = Cucumber.Common.TABLEDIV+ " " + cellData.Trim() + " ";
                                 }   
                             }
 
@@ -85,7 +85,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
 
                         if (isTableRow)
                         {
-                            rowData += " |";
+                            rowData += " "+ Cucumber.Common.TABLEDIV;
                         }
                         outputFile.WriteLine(rowData);
                     }

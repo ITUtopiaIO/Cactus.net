@@ -9,6 +9,7 @@ namespace Cactus.Cucumber
     public class Common
     {
         public static readonly string DISCLAIM = "# This feature file was auto generated from Excel by Cactus.net(https://github.com/ITUtopiaIO/Cactus.net)";
+        public static readonly string TABLEDIV = "|";
 
     }
 }
