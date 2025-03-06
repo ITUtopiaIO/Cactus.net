@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Cactus.ExcelConverter.MiniExcelConverter\Cactus.ExcelConverter.MiniExcelConverter.csproj" />
+    <ProjectReference Include="..\..\src\Cactus.ExcelConverter\Cactus.ExcelConverter.csproj" />
     <ProjectReference Include="..\Cactus.CucumberTest\Cactus.CucumberTest.csproj" />
   </ItemGroup>
 

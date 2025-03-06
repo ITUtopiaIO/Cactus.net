@@ -1,4 +1,4 @@
-Feature: MiniExcelConverter
+Feature: ExcelConverter
 
 #TODO: Need randominze the file name to avoid residual files for false positives.
 

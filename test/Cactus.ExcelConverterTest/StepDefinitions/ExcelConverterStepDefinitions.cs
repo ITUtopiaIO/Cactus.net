@@ -1,12 +1,12 @@
 using Cactus.CucumberTest;
-using Cactus.ExcelConverter.MiniExcelConverter;
+using Cactus.ExcelConverter;
 using NUnit.Framework;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Cactus.ExcelConverterTest.StepDefinitions
 {
     [Binding]
-    public sealed class MiniExcelConverterStepDefinitions
+    public sealed class ExcelConverterStepDefinitions
     {
         readonly string DEFAULT_FOLDER = "Features";
 

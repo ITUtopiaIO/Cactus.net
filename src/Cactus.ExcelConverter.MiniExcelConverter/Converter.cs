@@ -3,7 +3,7 @@ using Cactus.Cucumber;
 
 namespace Cactus.ExcelConverter.MiniExcelConverter
 {
-    public class Converter
+    public class Converter : IConverter
     {
         //TODO: to read mutlipe sheets
 
