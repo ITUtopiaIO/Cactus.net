@@ -3,7 +3,7 @@ Feature: DataGridSample
 Scenario: Add two numbers
 Given I have following two numbers  
  | First Number | Second Number  |
- | 50 | 70  |
-	When the two numbers are added
-	Then the result should be 120
+ | 50			| 70			 |
+When the two numbers are added
+Then the result should be 120
 
