@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.ReqnrollConverterTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.ReqnrollVerificationTest", "test\Cactus.ReqnrollVerificationTest\Cactus.ReqnrollVerificationTest.csproj", "{88A85963-7130-434B-A8F1-F4595507484A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.ExcelConverterTest", "test\Cactus.ExcelConverterTest\Cactus.ExcelConverterTest.csproj", "{497DD3D7-5203-2382-CCC7-8C198E041B9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{88A85963-7130-434B-A8F1-F4595507484A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88A85963-7130-434B-A8F1-F4595507484A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88A85963-7130-434B-A8F1-F4595507484A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{497DD3D7-5203-2382-CCC7-8C198E041B9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497DD3D7-5203-2382-CCC7-8C198E041B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497DD3D7-5203-2382-CCC7-8C198E041B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497DD3D7-5203-2382-CCC7-8C198E041B9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +115,7 @@ Global
 		{AC895C9F-41F7-42CD-B734-43C72D947CFB} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 		{2C5B9CDC-8F5A-43A7-99CF-0E6643C067EC} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 		{88A85963-7130-434B-A8F1-F4595507484A} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
+		{497DD3D7-5203-2382-CCC7-8C198E041B9E} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A757270-A1E5-443E-AAE5-4ECBE36C473A}

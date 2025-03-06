@@ -3,7 +3,7 @@ using Cactus.ExcelConverter.MiniExcelConverter;
 using NUnit.Framework;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Cactus.MiniExcelConverterTest.StepDefinitions
+namespace Cactus.ExcelConverterTest.StepDefinitions
 {
     [Binding]
     public sealed class MiniExcelConverterStepDefinitions
