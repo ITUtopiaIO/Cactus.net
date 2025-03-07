@@ -53,14 +53,14 @@ namespace Cactus.ExcelConverterTest.StepDefinitions
             Assert.That(File.Exists(_featureFile), Is.True);
         }
 
-        [Then("the feature file should match with {string}")]
-        public void ThenTheFeatureFileShouldMatchWith(string expectedFile)
+        [Then("the feature file should exactly match with {string}")]
+        public void ThenTheFeatureFileExactlyShouldMatchWith(string expectedFile)
         {
-            ThenTheFeatureFileShouldMatchWith(expectedFile, DEFAULT_FOLDER);
+            ThenTheFeatureFileShouldExactlyMatchWith(expectedFile, DEFAULT_FOLDER);
         }
 
-        [Then("the feature file should match with {string} in the {string} folder")]
-        public void ThenTheFeatureFileShouldMatchWith(string expectedFile, string folder)
+        [Then("the feature file should exactly match with {string} in the {string} folder")]
+        public void ThenTheFeatureFileShouldExactlyMatchWith(string expectedFile, string folder)
         {
             FileDiff fileDiff = new FileDiff();
             string _expectedFile = Path.Combine(folder, expectedFile);

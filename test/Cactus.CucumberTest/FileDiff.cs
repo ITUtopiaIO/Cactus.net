@@ -28,7 +28,15 @@ namespace Cactus.CucumberTest
                 {
                     var diffBlock = diff.DiffBlocks[i-1];
                     diffData.AppendLine("Difference " + (i) + ":");
-                    diffData.AppendLine("Expected: ".PadLeft(padLengh) + diff.PiecesOld[diffBlock.DeleteStartA].Trim());
+
+                    if (diffBlock.DeleteStartA < diff.PiecesOld.Length)
+                    {
+                        diffData.AppendLine("Expected: ".PadLeft(padLengh)+diff.PiecesOld[diffBlock.DeleteStartA].Trim());
+                    }
+                    else
+                    {
+                        diffData.AppendLine("Expected: ".PadLeft(padLengh) + "<No more data in expected file>");
+                    }
                     for (int j = 2; j <= diffBlock.DeleteCountA && j<=showDiffCount; j++)
                     {
                         diffData.AppendLine("".PadLeft(padLengh) + diff.PiecesOld[diffBlock.DeleteStartA+j-1].Trim());
@@ -39,7 +47,15 @@ namespace Cactus.CucumberTest
                         }
                     }
 
-                    diffData.AppendLine("Actual: ".PadLeft(padLengh) + diff.PiecesNew[diffBlock.InsertStartB].Trim());
+                   
+                    if (diffBlock.InsertStartB < diff.PiecesNew.Length)
+                    {
+                        diffData.AppendLine("Actual: ".PadLeft(padLengh)+diff.PiecesNew[diffBlock.InsertStartB].Trim());
+                     }
+                    else
+                    {
+                        diffData.AppendLine("Actual: ".PadLeft(padLengh) + "<No more data in actual file>");
+                    }
                     for (int j = 2; j <= diffBlock.InsertCountB && j <= showDiffCount; j++)
                     {
                         diffData.AppendLine("".PadLeft(padLengh) + diff.PiecesNew[diffBlock.InsertStartB+j-1].Trim());
