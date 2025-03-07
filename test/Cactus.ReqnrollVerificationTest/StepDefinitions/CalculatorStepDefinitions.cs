@@ -10,6 +10,7 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
         int _firstNumber;
         int _secondNumber;
         int _result;
+        Table _table;
 
         [Given("the first number is (.*)")]
         public void GivenTheFirstNumberIs(int number)
@@ -43,12 +44,16 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
             }
         }
 
-            [When("the two numbers are added")]
+
+        [Given("I have following two list of numbers")]
+        public void GivenIHaveFollowingTwoListOfNumbers(Table table)
+        {
+            _table = table;
+        }
+
+        [When("the two numbers are added")]
         public void WhenTheTwoNumbersAreAdded()
         {
-            //TODO: implement act (action) logic
-
-            //throw new PendingStepException();
             _result = _firstNumber + _secondNumber;
         }
 
@@ -58,12 +63,20 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
             _result = _firstNumber - _secondNumber;
         }
 
-            [Then("the result should be (.*)")]
+        [When("I call the SumProduct function")]
+        public void WhenICallTheSumProductFunction()
+        {
+            _result = 0;
+            foreach (var row in _table.Rows)
+            {
+                _result += int.Parse(row["First Number"]) * int.Parse(row["Second Number"]);
+            }   
+        }
+
+
+        [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int result)
         {
-            //TODO: implement assert (verification) logic
-
-            //throw new PendingStepException();
             Assert.That(_result, Is.EqualTo(result));
         }
     }

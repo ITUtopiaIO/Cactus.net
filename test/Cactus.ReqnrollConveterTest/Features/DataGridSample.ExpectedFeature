@@ -16,6 +16,6 @@ Given I have following two list of numbers
  | 4			 | 12  |
  | -3			 | 15  |
    
-When call the SumProduct Function  
+When I call the SumProduct function  
    
 Then the result should be 3503 

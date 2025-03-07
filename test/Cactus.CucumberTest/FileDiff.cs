@@ -27,7 +27,7 @@ namespace Cactus.CucumberTest
                 for (int i = 1; i <= diff.DiffBlocks.Count && i<= showDiffCount; i++)
                 {
                     var diffBlock = diff.DiffBlocks[i-1];
-                    diffData.AppendLine("Difference " + (i) + ":");
+                    diffData.AppendLine("Difference " + (i) + ": (line "+ diffBlock.DeleteStartA.ToString()+ ")");
 
                     if (diffBlock.DeleteStartA < diff.PiecesOld.Length)
                     {
@@ -35,7 +35,7 @@ namespace Cactus.CucumberTest
                     }
                     else
                     {
-                        diffData.AppendLine("Expected: ".PadLeft(padLengh) + "<No more data in expected file>");
+                        diffData.AppendLine("Expected: ".PadLeft(padLengh) + "(No more data in expected file)");
                     }
                     for (int j = 2; j <= diffBlock.DeleteCountA && j<=showDiffCount; j++)
                     {
@@ -54,7 +54,7 @@ namespace Cactus.CucumberTest
                      }
                     else
                     {
-                        diffData.AppendLine("Actual: ".PadLeft(padLengh) + "<No more data in actual file>");
+                        diffData.AppendLine("Actual: ".PadLeft(padLengh) + "(No more data in actual file)");
                     }
                     for (int j = 2; j <= diffBlock.InsertCountB && j <= showDiffCount; j++)
                     {
@@ -96,7 +96,7 @@ namespace Cactus.CucumberTest
                 }
                 if (value.Trim().StartsWith(Cucumber.Common.TABLEDIV))
                 {
-                    sb.Append(SimplifyTableLine(value));
+                    sb.AppendLine(SimplifyTableLine(value));
                     continue;
                 }
 
