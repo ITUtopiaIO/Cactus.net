@@ -7,3 +7,15 @@ Given I have following two numbers
 When the two numbers are added
 Then the result should be 120
 
+#Sheet: SumProduct
+Scenario: SumProduct Function  
+   
+Given I have following two list of numbers  
+ | First Number | Second Number  |
+ | 50			| 70  |
+ | 4			 | 12  |
+ | -3			 | 15  |
+   
+When call the SumProduct Function  
+   
+Then the result should be 3503 

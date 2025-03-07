@@ -142,10 +142,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 15
  await testRunner.ThenAsync("My converted feature file should match with \"DataGridSample.ExpectedFeature\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 16
- await testRunner.ThenAsync("I copy the converted feature file to \"../../../../Cactus.ReqnrollVerificationTest" +
-                        "/Features\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
             }
             await this.ScenarioCleanupAsync();
         }
