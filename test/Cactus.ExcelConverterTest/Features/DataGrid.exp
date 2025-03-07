@@ -1,0 +1,9 @@
+# This feature file was auto generated from Excel by Cactus.net(https://github.com/ITUtopiaIO/Cactus.net)
+
+Feature: DataGrid
+
+#Sheet: AddTwoNumbers
+Given I have following two numbers  
+ | First Number | Second Number  |
+ | 50			| 70			 |
+ | 100			| 200			 |
