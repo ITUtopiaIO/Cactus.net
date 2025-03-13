@@ -81,7 +81,7 @@ namespace Cactus.ExcelConverterTest.StepDefinitions
         {
             FileDiff fileDiff = new FileDiff();
             string _expectedFile = Path.Combine(folder, expectedFile);
-            string result = fileDiff.GetFileDiff(_featureFile, _expectedFile, ignoreEmptyLine: false, ignoreTableFormat);
+            string result = fileDiff.GetFileDiff(_featureFile, _expectedFile, ignoreEmptyLine: false, ignoreTableFormat: ignoreTableFormat);
             Assert.That(result, Is.Empty);
         }
 
