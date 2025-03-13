@@ -14,8 +14,8 @@ Given I have following two list of numbers
  | First Number | Second Number  |
  | 50			| 70  |
  | 4			 | 12  |
- | -3			 | 15  |
+ | -3			 | 11  |
    
 When I call the SumProduct function  
    
-Then the result should be 3503 
+Then the result should be 3515 
