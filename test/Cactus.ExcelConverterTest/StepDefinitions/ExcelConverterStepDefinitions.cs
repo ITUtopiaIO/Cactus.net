@@ -62,11 +62,30 @@ namespace Cactus.ExcelConverterTest.StepDefinitions
         [Then("the feature file should exactly match with {string} in the {string} folder")]
         public void ThenTheFeatureFileShouldExactlyMatchWith(string expectedFile, string folder)
         {
+            CheckFeatureFileMatchWith(expectedFile, folder, ignoreTableFormat: false);
+        }
+
+        [Then("the feature file should match with {string}")]
+        public void ThenTheFeatureFileShouldMatchWith(string expectedFile)
+        {
+            ThenTheFeatureFileShouldMatchWith(expectedFile, DEFAULT_FOLDER);
+        }
+
+        [Then("the feature file should match with {string} in the {string} folder")]
+        public void ThenTheFeatureFileShouldMatchWith(string expectedFile, string folder)
+        {
+            CheckFeatureFileMatchWith(expectedFile, folder, ignoreTableFormat: true);
+        }
+
+        private void CheckFeatureFileMatchWith(string expectedFile, string folder, bool ignoreTableFormat)
+        {
             FileDiff fileDiff = new FileDiff();
             string _expectedFile = Path.Combine(folder, expectedFile);
-            string result = fileDiff.GetFileDiff(_featureFile, _expectedFile, ignoreEmptyLine:false);
+            string result = fileDiff.GetFileDiff(_featureFile, _expectedFile, ignoreEmptyLine: false, ignoreTableFormat);
             Assert.That(result, Is.Empty);
         }
+
+
 
         //private string RandomizeFileName(string fileName)
         //{

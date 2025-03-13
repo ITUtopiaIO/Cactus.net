@@ -7,10 +7,10 @@ namespace Cactus.CucumberTest
 {
     public class FileDiff
     {
-        public string GetFileDiff(string outputFile, string expectedFile, bool ignoreEmptyLine=true, bool ignoreCommentLine=false)
+        public string GetFileDiff(string outputFile, string expectedFile, bool ignoreEmptyLine=true, bool ignoreCommentLine=false, bool ignoreTableFormat = true)
         {
-            string outputData = ReadFileData(outputFile, ignoreEmptyLine, ignoreCommentLine);
-            string expectedData = ReadFileData(expectedFile, ignoreEmptyLine, ignoreCommentLine);
+            string outputData = ReadFileData(outputFile, ignoreEmptyLine, ignoreCommentLine, ignoreTableFormat);
+            string expectedData = ReadFileData(expectedFile, ignoreEmptyLine, ignoreCommentLine, ignoreTableFormat);
 
             Differ differ = new Differ();
             var diff = differ.CreateLineDiffs(expectedData, outputData, true);
@@ -76,7 +76,7 @@ namespace Cactus.CucumberTest
             }
         }
 
-        private string ReadFileData(string fileName, bool ignoreEmptyLine, bool ignoreCommentLine)
+        private string ReadFileData(string fileName, bool ignoreEmptyLine, bool ignoreCommentLine, bool ignoreTableFormat)
         {
             var lines = File.ReadAllLines(fileName);
             StringBuilder sb = new StringBuilder();
@@ -94,7 +94,7 @@ namespace Cactus.CucumberTest
                 {
                     continue;
                 }
-                if (value.Trim().StartsWith(Cucumber.Common.TABLEDIV))
+                if (value.Trim().StartsWith(Cucumber.Common.TABLEDIV) && ignoreTableFormat)
                 {
                     sb.AppendLine(SimplifyTableLine(value));
                     continue;

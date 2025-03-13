@@ -5,8 +5,6 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
 {
     public class Converter : IConverter
     {
-        //TODO: to read mutlipe sheets
-
         readonly string SCENARIO = "Scenario";
         readonly string COLON = ":";
         readonly string FIRST_COLUMN = "A";
@@ -20,8 +18,6 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
 
             _excelFile = excelFileName;
             _featureFile = Path.ChangeExtension(excelFileName, ".feature");
-
-            //var Rows = MiniExcel.Query(_excelFile).ToList();
 
             using (StreamWriter outputFile = new StreamWriter(_featureFile))
             {
