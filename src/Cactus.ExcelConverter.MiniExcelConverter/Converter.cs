@@ -1,5 +1,7 @@
 ﻿using MiniExcelLibs;
 using Cactus.Cucumber;
+using System.Data;
+using System.Dynamic;
 
 namespace Cactus.ExcelConverter.MiniExcelConverter
 {
@@ -37,53 +39,75 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                         continue;
                     }
 
+                    DataTable table = new DataTable();
+                    bool isReadingTable = false;
                     var rows = MiniExcel.Query(_excelFile, sheetName: sheetName).ToList();
                     foreach (var row in rows)
                     {
-                        string rowData = string.Empty;
-
-                        bool isTableRow = false;
+                        //If first column is empty and second column is not, then it is a table row
                         if (String.IsNullOrEmpty(Convert.ToString(row.A)) && !String.IsNullOrEmpty(Convert.ToString(row.B)))
                         {
-                            isTableRow = true;
-                        }
-
-                        foreach (var cell in row)
-                        {
-                            string cellData = string.Empty;
-
-
-                            if (cell.Value != null)
+                            //Start of table
+                            if (isReadingTable == false)
                             {
-                                cellData = cell.Value.ToString();
+                                table = new DataTable();
+                                AddRowToTable(table, row, true);
+                            }
+                            else
+                            {
+                                AddRowToTable(table, row, false);
+                            }
 
-                                if (FIRST_COLUMN.Equals(cell.Key.ToString()))
+                            isReadingTable = true;
+                        }
+                        else
+                        {
+                            //End of table
+                            if (isReadingTable && table != null)
+                            {
+                                WriteTableToFile(table, outputFile);
+                                isReadingTable = false;
+                                table = null;
+                            }
+
+                            //Reading non-table data
+                            string rowData = string.Empty;
+                            foreach (var cell in row)
+                            {
+                                string cellData = string.Empty;
+
+
+                                if (cell.Value != null)
                                 {
-                                    if (SCENARIO.Equals(cellData))
+                                    cellData = cell.Value.ToString();
+
+                                    if (FIRST_COLUMN.Equals(cell.Key.ToString()))
                                     {
-                                        cellData = cellData.Trim() + COLON;
-                                    }
-                                    else
-                                    {
-                                        cellData = "\t" + cellData.Trim();
+                                        if (SCENARIO.Equals(cellData))
+                                        {
+                                            cellData = cellData.Trim() + COLON;
+                                        }
+                                        else
+                                        {
+                                            cellData = "\t" + cellData.Trim();
+                                        }
                                     }
                                 }
 
-                                //Table data will not start w/ first column
-                                if (isTableRow)
-                                {
-                                    cellData = Cucumber.Common.TABLEDIV+ " " + cellData.Trim() + " ";
-                                }   
+                                rowData += cellData.Trim() + " ";
                             }
-
-                            rowData += cellData.Trim() + " ";
+                            outputFile.WriteLine(rowData);
                         }
 
-                        if (isTableRow)
-                        {
-                            rowData += " "+ Cucumber.Common.TABLEDIV;
-                        }
-                        outputFile.WriteLine(rowData);
+
+                    }
+
+                    //If table is at the end of the sheet
+                    if (isReadingTable && table !=null)
+                    {
+                        WriteTableToFile(table, outputFile);
+
+                        isReadingTable = false;
                     }
                 }
             }
@@ -91,7 +115,47 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
             return _featureFile;
         }
 
-        
+
+        private void AddRowToTable(DataTable table, ExpandoObject row, bool isHeadRow)
+        {
+            if (isHeadRow)
+            {
+                foreach (var cell in row)
+                {
+                    if (cell.Value != null) 
+                    { 
+                        table.Columns.Add(cell.Key);
+                    }
+                }
+
+            }
+
+            DataRow newRow = table.NewRow();
+            foreach (var cell in row)
+            {
+            if (cell.Value != null)
+            { 
+                newRow[cell.Key.ToString()] = cell.Value;
+            }
+            }
+            table.Rows.Add(newRow);
+        }
+
+
+        private void WriteTableToFile(DataTable table, StreamWriter outputFile)
+        {
+            foreach (DataRow row in table.Rows)
+            {
+                string rowData = string.Empty;
+                foreach (DataColumn column in table.Columns)
+                {
+                    rowData += Cucumber.Common.TABLEDIV + " " + row[column].ToString().Trim() + " ";
+                }
+                rowData += " " + Cucumber.Common.TABLEDIV;
+
+                outputFile.WriteLine(rowData);
+            }
+        }
 
     }
 }
