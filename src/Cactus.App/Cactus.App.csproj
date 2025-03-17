@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cactus.Cucumber\Cactus.Cucumber.csproj" />
+    <ProjectReference Include="..\Cactus.ExcelConverter.MiniExcelConverter\Cactus.ExcelConverter.MiniExcelConverter.csproj" />
+    <ProjectReference Include="..\Cactus.ExcelConverter\Cactus.ExcelConverter.csproj" />
+  </ItemGroup>
+
 </Project>
