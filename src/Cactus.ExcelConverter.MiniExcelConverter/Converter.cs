@@ -127,16 +127,15 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                         table.Columns.Add(cell.Key);
                     }
                 }
-
             }
 
             DataRow newRow = table.NewRow();
             foreach (var cell in row)
             {
-            if (cell.Value != null)
-            { 
-                newRow[cell.Key.ToString()] = cell.Value;
-            }
+                if (cell.Value != null)
+                { 
+                    newRow[cell.Key.ToString()] = cell.Value;
+                }
             }
             table.Rows.Add(newRow);
         }
@@ -144,14 +143,48 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
 
         private void WriteTableToFile(DataTable table, StreamWriter outputFile)
         {
-            foreach (DataRow row in table.Rows)
+            foreach (DataColumn column in table.Columns)
             {
+                int width = 0;
+                foreach (DataRow row in table.Rows)
+                {
+                    if (row[column].ToString().Length > width)
+                    {
+                        width= row[column].ToString().Length;
+                    }
+                }
+                column.ExtendedProperties.Add("Width", width);
+
+                string paddingDirection = "Right";
+                foreach (DataRow row in table.Rows)
+                {
+                    double num;
+                    if ( double.TryParse(row[column].ToString(), out num))
+                    {
+                        paddingDirection = "Left";
+                        break;
+                    }
+                }
+                column.ExtendedProperties.Add("PaddingDirection", paddingDirection);
+            }
+
+            for (int rowIndex =0; rowIndex < table.Rows.Count; rowIndex++)
+            {
+                DataRow row = table.Rows[rowIndex];
                 string rowData = string.Empty;
                 foreach (DataColumn column in table.Columns)
                 {
-                    rowData += Cucumber.Common.TABLEDIV + " " + row[column].ToString().Trim() + " ";
+                    if (rowIndex == 0 ||
+                        "Right".Equals(column.ExtendedProperties["PaddingDirection"].ToString()))
+                    {
+                        rowData += Cucumber.Common.TABLEDIV + " " + row[column].ToString().Trim().PadRight(Int32.Parse(column.ExtendedProperties["Width"].ToString()), ' ') + " ";
+                    }
+                    else
+                    {
+                        rowData += Cucumber.Common.TABLEDIV + " " + row[column].ToString().Trim().PadLeft(Int32.Parse(column.ExtendedProperties["Width"].ToString()), ' ') + " ";
+                    }
                 }
-                rowData += " " + Cucumber.Common.TABLEDIV;
+                rowData += Cucumber.Common.TABLEDIV;
 
                 outputFile.WriteLine(rowData);
             }
