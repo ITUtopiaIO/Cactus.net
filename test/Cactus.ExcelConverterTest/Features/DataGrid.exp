@@ -4,6 +4,7 @@ Feature: DataGrid
 
 #Sheet: AddTwoNumbers
 Given I have following two numbers  
-| First #    | Op    | Second # |
-|         50 | Plus  |       70 |
-| 1000000000 | Minus |      200 |
+| First #    | Op    | Second #  |
+|         50 | Plus  |        70 |
+| 1000000000 | Minus |       200 |
+|         55 |       | 3.1415926 |
