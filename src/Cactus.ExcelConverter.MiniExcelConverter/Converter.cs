@@ -8,6 +8,8 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
     public class Converter : IConverter
     {
         readonly string SCENARIO = "Scenario";
+        readonly string SCENARIO_OUTLINE = "Scenario Outline";
+        readonly string EXAMPLES = "Examples";
         readonly string COLON = ":";
         readonly string FIRST_COLUMN = "A";
         readonly string SECOND_COLUMN = "B";
@@ -83,7 +85,9 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
 
                                     if (FIRST_COLUMN.Equals(cell.Key.ToString()))
                                     {
-                                        if (SCENARIO.Equals(cellData))
+                                        if (SCENARIO.Equals(cellData) ||
+                                            SCENARIO_OUTLINE.Equals(cellData) ||
+                                            EXAMPLES.Equals(cellData))
                                         {
                                             cellData = cellData.Trim() + COLON;
                                         }

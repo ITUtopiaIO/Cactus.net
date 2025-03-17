@@ -1,0 +1,18 @@
+# This feature file was auto generated from Excel by Cactus.net(https://github.com/ITUtopiaIO/Cactus.net) at 3/12/2025 11:57:22 PM
+
+Feature: ScenarioOutlineSample
+
+#Sheet: _intro
+
+#Sheet: AddTwoNumbers
+Scenario Outline: Add two numbers  
+Given the first number is <a> 
+And the second number is <b> 
+When the two numbers are added  
+Then the result should be <c> 
+
+Examples: 
+	| case | a  | b  | c   |
+	| 1    | 50 | 70 | 120 |
+	| 2    | -8 | 20 | 12  |
+	

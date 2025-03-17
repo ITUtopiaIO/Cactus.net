@@ -14,3 +14,9 @@ Scenario: Data Grid Sample Conversion
 	When I convert the Excel file to a feature file
 	Then My converted feature file should match with "DataGridSample.ExpectedFeature"
 	Then I copy the converted feature file to "../../../../Cactus.ReqnrollVerificationTest/Features"
+
+Scenario: Scenario Outline Sample Conversion
+	Given I have an Excel file named "ScenarioOutlineSample.xlsx"
+	When I convert the Excel file to a feature file
+	Then My converted feature file should match with "ScenarioOutlineSample.ExpectedFeature"
+	Then I copy the converted feature file to "../../../../Cactus.ReqnrollVerificationTest/Features"
