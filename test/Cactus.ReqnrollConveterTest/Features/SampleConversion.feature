@@ -1,22 +1,17 @@
-Feature: Sample Conversion Test
+# This feature file was auto generated from Excel by Cactus.net(https://github.com/ITUtopiaIO/Cactus.net) at 3/26/2025 12:23:03 AM
 
-Convert sample test form excel to cucumber feature file
+Feature: SampleConversion
 
-Scenario: Basic Sample Conversion
-	Given I have an Excel file named "BasicSample.xlsx"
-	When I convert the Excel file to a feature file
-	Then My converted feature file should match with "BasicSample.ExpectedFeature"
-	Then I copy the converted feature file to "../../../../Cactus.ReqnrollVerificationTest/Features"
-
-
-Scenario: Data Grid Sample Conversion
-	Given I have an Excel file named "DataGridSample.xlsx"
-	When I convert the Excel file to a feature file
-	Then My converted feature file should match with "DataGridSample.ExpectedFeature"
-	Then I copy the converted feature file to "../../../../Cactus.ReqnrollVerificationTest/Features"
-
-Scenario: Scenario Outline Sample Conversion
-	Given I have an Excel file named "ScenarioOutlineSample.xlsx"
-	When I convert the Excel file to a feature file
-	Then My converted feature file should match with "ScenarioOutlineSample.ExpectedFeature"
-	Then I copy the converted feature file to "../../../../Cactus.ReqnrollVerificationTest/Features"
+#Sheet: Sample Conversion
+    
+Scenario Outline: Convert Excel to Feature File and Copy to Reqnoll Verification Folder   
+Given I have an Excel file named "<ExcelFile>"  
+When I convert the Excel file to a feature file   
+Then My converted feature file should match with "<ExpectedFeature>"  
+Then I copy the converted feature file to "../../../../Cactus.ReqnrollVerificationTest/Features"  
+    
+Examples:    
+| case                               | ExcelFile                  | ExpectedFeature                       |
+| Basic Sample Conversion            | BasicSample.xlsx           | BasicSample.ExpectedFeature           |
+| Data Grid Sample Conversion        | DataGridSample.xlsx        | DataGridSample.ExpectedFeature        |
+| Scenario Outline Sample Conversion | ScenarioOutlineSample.xlsx | ScenarioOutlineSample.ExpectedFeature |
