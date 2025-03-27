@@ -7,10 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\**" />
     <Compile Remove="Data\**" />
+    <EmbeddedResource Remove="bin\**" />
     <EmbeddedResource Remove="Data\**" />
+    <None Remove="bin\**" />
     <None Remove="Data\**" />
+    <ReqnrollFeatureFiles Remove="bin\**" />
     <ReqnrollFeatureFiles Remove="Data\**" />
+    <ReqnrollObsoleteCodeBehindFiles Remove="bin\**" />
     <ReqnrollObsoleteCodeBehindFiles Remove="Data\**" />
   </ItemGroup>
 
