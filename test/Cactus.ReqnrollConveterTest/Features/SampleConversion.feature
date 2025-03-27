@@ -1,4 +1,4 @@
-# This feature file was auto generated from Excel by Cactus.net(https://github.com/ITUtopiaIO/Cactus.net) at 3/26/2025 12:23:03 AM
+# This feature file was auto generated from Excel by Cactus.net(https://github.com/ITUtopiaIO/Cactus.net) at 3/26/2025 11:35:24 PM
 
 Feature: SampleConversion
 
@@ -15,3 +15,4 @@ Examples:
 | Basic Sample Conversion            | BasicSample.xlsx           | BasicSample.ExpectedFeature           |
 | Data Grid Sample Conversion        | DataGridSample.xlsx        | DataGridSample.ExpectedFeature        |
 | Scenario Outline Sample Conversion | ScenarioOutlineSample.xlsx | ScenarioOutlineSample.ExpectedFeature |
+| Background Sample Conversion       | BackgroundSample.xlsx      | BackgroundSample.ExpectedFeature      |

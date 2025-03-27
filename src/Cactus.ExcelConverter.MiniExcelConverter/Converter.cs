@@ -10,6 +10,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
         readonly string SCENARIO = "Scenario";
         readonly string SCENARIO_OUTLINE = "Scenario Outline";
         readonly string EXAMPLES = "Examples";
+        readonly string BACKGROUND = "Background";
         readonly string COLON = ":";
         readonly string FIRST_COLUMN = "A";
         readonly string SECOND_COLUMN = "B";
@@ -39,6 +40,11 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                     if (sheetName.StartsWith("_"))
                     {
                         continue;
+                    }
+
+                    if (sheetName.Equals(BACKGROUND))
+                    {
+                        outputFile.WriteLine(BACKGROUND+ COLON);
                     }
 
                     DataTable table = new DataTable();

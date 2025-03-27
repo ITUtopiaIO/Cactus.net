@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Cactus.ReqnrollConverterTest.Features
+namespace Cactus.ExcelConverterTest.Features
 {
     using Reqnroll;
     using System;
@@ -20,18 +20,18 @@ namespace Cactus.ReqnrollConverterTest.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("SampleConversion")]
+    [NUnit.Framework.DescriptionAttribute("ConverterTests")]
     [NUnit.Framework.FixtureLifeCycleAttribute(NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    public partial class SampleConversionFeature
+    public partial class ConverterTestsFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "SampleConversion", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "ConverterTests", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
-#line 1 "SampleConversion.feature"
+#line 1 "ConverterTests.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -83,19 +83,19 @@ namespace Cactus.ReqnrollConverterTest.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Convert Excel to Feature File and Copy to Reqnoll Verification Folder")]
-        [NUnit.Framework.TestCaseAttribute("Basic Sample Conversion", "BasicSample.xlsx", "BasicSample.ExpectedFeature", null)]
-        [NUnit.Framework.TestCaseAttribute("Data Grid Sample Conversion", "DataGridSample.xlsx", "DataGridSample.ExpectedFeature", null)]
-        [NUnit.Framework.TestCaseAttribute("Scenario Outline Sample Conversion", "ScenarioOutlineSample.xlsx", "ScenarioOutlineSample.ExpectedFeature", null)]
-        [NUnit.Framework.TestCaseAttribute("Background Sample Conversion", "BackgroundSample.xlsx", "BackgroundSample.ExpectedFeature", null)]
-        public async System.Threading.Tasks.Task ConvertExcelToFeatureFileAndCopyToReqnollVerificationFolder(string @case, string excelFile, string expectedFeature, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Convert Excel to Feature File")]
+        [NUnit.Framework.TestCaseAttribute("Simple Excel", "SampleTest.xlsx", "SampleTest.feature", "SampleTest.exp", null)]
+        [NUnit.Framework.TestCaseAttribute("Simple Excel with Space", "SampleTestWSpace.xlsx", "SampleTestWSpace.feature", "SampleTestWSpace.exp", null)]
+        [NUnit.Framework.TestCaseAttribute("Excel with Data Grid", "DataGrid.xlsx", "DataGrid.feature", "DataGrid.exp", null)]
+        public async System.Threading.Tasks.Task ConvertExcelToFeatureFile(string @case, string excelFile, string convertedFeature, string expectedFeature, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("case", @case);
             argumentsOfScenario.Add("ExcelFile", excelFile);
+            argumentsOfScenario.Add("ConvertedFeature", convertedFeature);
             argumentsOfScenario.Add("ExpectedFeature", expectedFeature);
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Convert Excel to Feature File and Copy to Reqnoll Verification Folder", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Convert Excel to Feature File", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -107,17 +107,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 8
-await testRunner.GivenAsync(string.Format("I have an Excel file named \"{0}\"", excelFile), ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+await testRunner.GivenAsync(string.Format("I have an Excel file \"{0}\"", excelFile), ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 9
 await testRunner.WhenAsync("I convert the Excel file to a feature file", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 10
-await testRunner.ThenAsync(string.Format("My converted feature file should match with \"{0}\"", expectedFeature), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+await testRunner.ThenAsync(string.Format("I should have a feature file \"{0}\"", convertedFeature), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 11
-await testRunner.ThenAsync("I copy the converted feature file to \"../../../../Cactus.ReqnrollVerificationTest" +
-                        "/Features\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+await testRunner.AndAsync(string.Format("the feature file should exactly match with \"{0}\"", expectedFeature), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

@@ -1,0 +1,18 @@
+Feature: BackgroundSample
+
+#Sheet: Background
+Background: 
+Given the first number is 50 
+And the second number is 70 
+
+#Sheet: AddTwoNumbers
+Scenario: Add two numbers  
+When the two numbers are added  
+Then the result should be 120 
+
+#Sheet: MinusTwoNumbers
+Scenario: Minus  two numbers  
+When I subtract the second number from the first number  
+Then the result should be -20 
+
+
