@@ -52,8 +52,13 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                     var rows = MiniExcel.Query(_excelFile, sheetName: sheetName).ToList();
                     foreach (var row in rows)
                     {
+                        //If both first and second column are empty, then this row will be ignored
+                        if (String.IsNullOrEmpty(Convert.ToString(row.A)) && String.IsNullOrEmpty(Convert.ToString(row.B)))
+                        {
+                            continue;
+                        }
                         //If first column is empty and second column is not, then it is a table row
-                        if (String.IsNullOrEmpty(Convert.ToString(row.A)) && !String.IsNullOrEmpty(Convert.ToString(row.B)))
+                        else if (String.IsNullOrEmpty(Convert.ToString(row.A)) && !String.IsNullOrEmpty(Convert.ToString(row.B)))
                         {
                             //Start of table
                             if (isReadingTable == false)
@@ -80,13 +85,14 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
 
                             //Reading non-table data
                             string rowData = string.Empty;
+                            int emptyCellCount = 0;
                             foreach (var cell in row)
                             {
                                 string cellData = string.Empty;
 
-
-                                if (cell.Value != null)
+                                if (cell.Value != null && emptyCellCount<2)
                                 {
+                                    emptyCellCount= 0;
                                     cellData = cell.Value.ToString();
 
                                     if (FIRST_COLUMN.Equals(cell.Key.ToString()))
@@ -102,9 +108,15 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                                             cellData = "\t" + cellData.Trim();
                                         }
                                     }
+
+                                    rowData += cellData.Trim() + " ";
+
+                                }
+                                else
+                                {
+                                    emptyCellCount++;
                                 }
 
-                                rowData += cellData.Trim() + " ";
                             }
                             outputFile.WriteLine(rowData);
                         }
