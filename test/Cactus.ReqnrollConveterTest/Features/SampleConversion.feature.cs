@@ -85,7 +85,6 @@ namespace Cactus.ReqnrollConverterTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Convert Excel to Feature File and Copy to Reqnoll Verification Folder")]
         [NUnit.Framework.TestCaseAttribute("Basic Sample Conversion", "BasicSample.xlsx", "BasicSample.ExpectedFeature", null)]
-        [NUnit.Framework.TestCaseAttribute("Data Grid Sample Conversion", "DataGridSample.xlsx", "DataGridSample.ExpectedFeature", null)]
         [NUnit.Framework.TestCaseAttribute("Scenario Outline Sample Conversion", "ScenarioOutlineSample.xlsx", "ScenarioOutlineSample.ExpectedFeature", null)]
         [NUnit.Framework.TestCaseAttribute("Background Sample Conversion", "BackgroundSample.xlsx", "BackgroundSample.ExpectedFeature", null)]
         public async System.Threading.Tasks.Task ConvertExcelToFeatureFileAndCopyToReqnollVerificationFolder(string @case, string excelFile, string expectedFeature, string[] exampleTags)

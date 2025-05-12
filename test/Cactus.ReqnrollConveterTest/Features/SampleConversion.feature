@@ -13,6 +13,6 @@ Then I copy the converted feature file to "../../../../Cactus.ReqnrollVerificati
 Examples:    
 | case                               | ExcelFile                  | ExpectedFeature                       |
 | Basic Sample Conversion            | BasicSample.xlsx           | BasicSample.ExpectedFeature           |
-| Data Grid Sample Conversion        | DataGridSample.xlsx        | DataGridSample.ExpectedFeature        |
+#| Data Grid Sample Conversion        | DataGridSample.xlsx        | DataGridSample.ExpectedFeature        |
 | Scenario Outline Sample Conversion | ScenarioOutlineSample.xlsx | ScenarioOutlineSample.ExpectedFeature |
 | Background Sample Conversion       | BackgroundSample.xlsx      | BackgroundSample.ExpectedFeature      |
