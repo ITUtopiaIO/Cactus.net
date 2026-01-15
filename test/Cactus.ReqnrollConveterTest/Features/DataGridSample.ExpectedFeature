@@ -1,6 +1,8 @@
 Feature: DataGridSample
 
+#Sheet: AddTwoNumbers
 Scenario: Add two numbers
+
 Given I have following two numbers  
  | First Number | Second Number  |
  | 50			| 70			 |
@@ -10,7 +12,7 @@ Then the result should be 120
 #Sheet: SumProduct
 Scenario: SumProduct Function  
    
-Given I have following two list of numbers  
+Given I have following list of numbers  
  | First Number | Second Number  |
  | 50			| 70  |
  | 4			 | 12  |
@@ -19,3 +21,16 @@ Given I have following two list of numbers
 When I call the SumProduct function  
    
 Then the result should be 3515 
+
+#Sheet: SumAverage
+Scenario: SumAverage Function 
+# To test that table value will not be ignored due to empty space 
+# For simplify testing purpose, I made the roll average full integer. 
+Given I have following list of numbers 
+| First Number | Second Number | Third Number | Forth Number |
+|           50 |            70 |          100 |           20 |
+|              |            12 |            4 |              |
+|           -3 |               |              |           11 |
+|              |               |           24 |           20 |
+When I call the SumAverage function 
+Then the result should be 94 

@@ -10,8 +10,7 @@
     <Compile Remove="bin\**" />
     <EmbeddedResource Remove="bin\**" />
     <None Remove="bin\**" />
-    <ReqnrollFeatureFiles Remove="bin\**" />
-    <ReqnrollObsoleteCodeBehindFiles Remove="bin\**" />
+    <ReqnrollFeatureFile Remove="bin\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,6 +50,14 @@
     <None Update="Features\SampleTestWSpace.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ReqnrollObsoleteCodeBehindFiles Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ReqnrollLegacyCodeBehindFiles Remove="bin\**" />
   </ItemGroup>
 
 </Project>

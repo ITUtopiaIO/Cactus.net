@@ -6,9 +6,10 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
     public sealed class CalculatorStepDefinitions
     {
         // For additional details on Reqnroll step definitions see https://go.reqnroll.net/doc-stepdef
+        // This class is simply to verify the testing cases, and may not be well designed for real calculator usage.
 
-        int _firstNumber;
-        int _secondNumber;
+        int? _firstNumber;
+        int? _secondNumber;
         int _result;
         Table _table;
 
@@ -45,7 +46,7 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
         }
 
 
-        [Given("I have following two list of numbers")]
+        [Given("I have following list of numbers")]
         public void GivenIHaveFollowingTwoListOfNumbers(Table table)
         {
             _table = table;
@@ -54,13 +55,13 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
         [When("the two numbers are added")]
         public void WhenTheTwoNumbersAreAdded()
         {
-            _result = _firstNumber + _secondNumber;
+            _result = _firstNumber.Value + _secondNumber.Value;
         }
 
         [When("I subtract the second number from the first number")]
         public void WhenISubtractTheSecondNumberFromTheFirstNumber()
         {
-            _result = _firstNumber - _secondNumber;
+            _result = _firstNumber.Value - _secondNumber.Value;
         }
 
         [When("I call the SumProduct function")]
@@ -73,6 +74,28 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
             }   
         }
 
+        [When("I call the SumAverage function")]
+        public void WhenICallTheSumAverageFunction()
+        {
+            _result = 0;
+            foreach (var row in _table.Rows)
+            {
+                int count = 0;
+                int sub = 0;
+
+                foreach (var r in row.Values)
+                {
+                    if (string.IsNullOrEmpty(r))
+                        continue;
+
+                    sub += int.Parse(r);
+                    count++;
+                }
+
+                _result += sub / count;
+
+            }
+        }
 
         [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int result)

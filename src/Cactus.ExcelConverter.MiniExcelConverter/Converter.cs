@@ -52,30 +52,30 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                     var rows = MiniExcel.Query(_excelFile, sheetName: sheetName).ToList();
                     foreach (var row in rows)
                     {
-                        //If both first and second column are empty, then this row will be ignored
-                        if (String.IsNullOrEmpty(Convert.ToString(row.A)) && String.IsNullOrEmpty(Convert.ToString(row.B)))
+                        bool emptyRow = true;
+                        foreach (var cell in row)
                         {
-                            continue;
+                            if (cell.Value != null)
+                            {
+                                emptyRow = false;
+                                break;
+                            }
                         }
-                        //If first column is empty and second column is not, then it is a table row
-                        else if (String.IsNullOrEmpty(Convert.ToString(row.A)) && !String.IsNullOrEmpty(Convert.ToString(row.B)))
-                        {
-                            //Start of table
-                            if (isReadingTable == false)
-                            {
-                                table = new DataTable();
-                                AddRowToTable(table, row, true);
-                            }
-                            else
-                            {
-                                AddRowToTable(table, row, false);
-                            }
 
+                        //If first column is empty and second column is not, then it is a table header row.
+                        if (!isReadingTable && String.IsNullOrEmpty(Convert.ToString(row.A)) && !String.IsNullOrEmpty(Convert.ToString(row.B)))
+                        {
+                            table = new DataTable();
+                            AddRowToTable(table, row, true);
                             isReadingTable = true;
+                        }
+                        else if (isReadingTable & !emptyRow)
+                        {
+                            AddRowToTable(table, row, false);
                         }
                         else
                         {
-                            //End of table
+                            //End of table if there's an empty row or non-table row
                             if (isReadingTable && table != null)
                             {
                                 WriteTableToFile(table, outputFile);
@@ -84,15 +84,21 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                             }
 
                             //Reading non-table data
+                            //If both first and second column are empty, then this row will be ignored
+                            if (String.IsNullOrEmpty(Convert.ToString(row.A)) && String.IsNullOrEmpty(Convert.ToString(row.B)))
+                            {
+                                continue;
+                            }
+
                             string rowData = string.Empty;
                             int emptyCellCount = 0;
                             foreach (var cell in row)
                             {
                                 string cellData = string.Empty;
 
-                                if (cell.Value != null && emptyCellCount<2)
+                                if (cell.Value != null && emptyCellCount < 2)
                                 {
-                                    emptyCellCount= 0;
+                                    emptyCellCount = 0;
                                     cellData = cell.Value.ToString();
 
                                     if (FIRST_COLUMN.Equals(cell.Key.ToString()))

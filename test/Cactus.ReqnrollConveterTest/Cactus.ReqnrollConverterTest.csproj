@@ -13,9 +13,8 @@
     <EmbeddedResource Remove="Data\**" />
     <None Remove="bin\**" />
     <None Remove="Data\**" />
-    <ReqnrollFeatureFiles Remove="bin\**" />
+    <ReqnrollFeatureFile Remove="bin\**" />
     <ReqnrollFeatureFiles Remove="Data\**" />
-    <ReqnrollObsoleteCodeBehindFiles Remove="bin\**" />
     <ReqnrollObsoleteCodeBehindFiles Remove="Data\**" />
   </ItemGroup>
 
@@ -68,6 +67,14 @@
     <None Update="Features\ScenarioOutlineSample.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ReqnrollObsoleteCodeBehindFiles Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ReqnrollLegacyCodeBehindFiles Remove="bin\**" />
   </ItemGroup>
 
 </Project>
