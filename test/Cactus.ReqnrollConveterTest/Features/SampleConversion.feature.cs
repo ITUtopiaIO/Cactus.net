@@ -105,14 +105,15 @@ namespace Cactus.ReqnrollConverterTest.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/SampleConversion.feature.ndjson", 5);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/SampleConversion.feature.ndjson", 6);
         }
         
         [global::NUnit.Framework.TestAttribute()]
         [global::NUnit.Framework.DescriptionAttribute("Convert Excel to Feature File and Copy to Reqnoll Verification Folder")]
         [global::NUnit.Framework.TestCaseAttribute("Basic Sample Conversion", "BasicSample.xlsx", "BasicSample.ExpectedFeature", "0", null)]
-        [global::NUnit.Framework.TestCaseAttribute("Scenario Outline Sample Conversion", "ScenarioOutlineSample.xlsx", "ScenarioOutlineSample.ExpectedFeature", "1", null)]
-        [global::NUnit.Framework.TestCaseAttribute("Background Sample Conversion", "BackgroundSample.xlsx", "BackgroundSample.ExpectedFeature", "2", null)]
+        [global::NUnit.Framework.TestCaseAttribute("Data Grid Sample Conversion", "DataGridSample.xlsx", "DataGridSample.ExpectedFeature", "1", null)]
+        [global::NUnit.Framework.TestCaseAttribute("Scenario Outline Sample Conversion", "ScenarioOutlineSample.xlsx", "ScenarioOutlineSample.ExpectedFeature", "2", null)]
+        [global::NUnit.Framework.TestCaseAttribute("Background Sample Conversion", "BackgroundSample.xlsx", "BackgroundSample.ExpectedFeature", "3", null)]
         public async global::System.Threading.Tasks.Task ConvertExcelToFeatureFileAndCopyToReqnollVerificationFolder(string @case, string excelFile, string expectedFeature, string @__pickleIndex, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;

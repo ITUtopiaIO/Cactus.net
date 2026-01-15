@@ -142,19 +142,21 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
         {
             if (isHeadRow)
             {
-                foreach (var cell in row)
+                for (int i = 1; i < row.Count(); i++)
                 {
-                    if (cell.Value != null) 
-                    { 
-                        table.Columns.Add(cell.Key);
+                    if (row.ElementAt(i).Value != null)
+                    {
+                        table.Columns.Add(row.ElementAt(i).Key);
                     }
+                    else
+                        break;
                 }
             }
 
             DataRow newRow = table.NewRow();
             foreach (var cell in row)
             {
-                if (cell.Value != null)
+                if (cell.Value != null && table.Columns.Contains(cell.Key))
                 { 
                     newRow[cell.Key.ToString()] = cell.Value;
                 }
