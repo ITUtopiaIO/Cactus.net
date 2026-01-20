@@ -1,7 +1,7 @@
 # Cactus 
 By ITUtopia LLC
 
-Covert Excel BDD Case to Cucumber
+Writing complex BDD testing cases in Excel with table and formula, and then convert to Cucumber, like Reqnroll, Specflow
 
 # The project is currently in DIP - Dev In Progress.
 
