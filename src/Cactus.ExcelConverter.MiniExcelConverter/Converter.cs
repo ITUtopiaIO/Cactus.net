@@ -99,7 +99,8 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                                 if (cell.Value != null && emptyCellCount < 2)
                                 {
                                     emptyCellCount = 0;
-                                    cellData = cell.Value.ToString();
+
+                                    cellData = GetCellData(cell.Value); 
 
                                     if (FIRST_COLUMN.Equals(cell.Key.ToString()))
                                     {
@@ -164,7 +165,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
             {
                 if (cell.Value != null && table.Columns.Contains(cell.Key))
                 { 
-                    newRow[cell.Key.ToString()] = cell.Value;
+                    newRow[cell.Key.ToString()] = GetCellData(cell.Value);
                 }
             }
             table.Rows.Add(newRow);
@@ -220,5 +221,20 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
             }
         }
 
+        private static string GetCellData(object value)
+        {
+            if (object.ReferenceEquals(value, null))
+            {
+                return string.Empty;
+            }
+            if ((value is double dblValue) && !(value is decimal decValue ))
+            {
+                return Convert.ToDecimal(dblValue).ToString();
+            }
+            else
+            {
+                return value.ToString();
+            }
+        }
     }
 }

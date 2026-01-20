@@ -1,0 +1,13 @@
+# This feature file was auto generated from Excel by Cactus.net(https://github.com/ITUtopiaIO/Cactus.net)
+
+Feature: FormulaTest
+
+#Sheet: Minus
+Scenario: Minus
+# This scenario is for code testing only, and not intended to be full funcitonal feature file
+Given the first number is 4.4
+And the second number is 3.3
+When I enter excel fomula first number - second number
+Then the result should be 1.1
+
+

@@ -9,18 +9,27 @@ Given I have following two numbers
 When the two numbers are added
 Then the result should be 120
 
+#Sheet: HavingMinusFormulaInTable
+Scenario: Having minus formula in table
+
+Given I have following two numbers  
+ | First Number | Second Number  |
+ | 1.1			| 70			 |
+When the two numbers are added
+Then the result should be 71.1
+
 #Sheet: SumProduct
 Scenario: SumProduct Function  
    
 Given I have following list of numbers  
  | First Number | Second Number  |
  | 50			| 70  |
- | 4			 | 12  |
+ | 4.3			 | 12  |
  | -3			 | 11  |
    
 When I call the SumProduct function  
    
-Then the result should be 3515 
+Then the result should be 3518.6 
 
 #Sheet: SumAverage
 Scenario: SumAverage Function 

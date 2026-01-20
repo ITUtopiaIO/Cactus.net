@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Runtime.CompilerServices;
+
 int numberOfArguments = args.Length;
 if (numberOfArguments == 0)
 {
@@ -23,5 +25,7 @@ catch (Exception ex)
     Console.WriteLine(ex.Message);
     return;
 }
+
+
 
 

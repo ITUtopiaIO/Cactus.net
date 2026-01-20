@@ -8,13 +8,13 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
         // For additional details on Reqnroll step definitions see https://go.reqnroll.net/doc-stepdef
         // This class is simply to verify the testing cases, and may not be well designed for real calculator usage.
 
-        int? _firstNumber;
-        int? _secondNumber;
-        int _result;
+        decimal? _firstNumber;
+        decimal? _secondNumber;
+        decimal _result;
         Table _table;
 
         [Given("the first number is (.*)")]
-        public void GivenTheFirstNumberIs(int number)
+        public void GivenTheFirstNumberIs(decimal number)
         {
             //TODO: implement arrange (precondition) logic
             // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata
@@ -27,7 +27,7 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
         }
 
         [Given("the second number is (.*)")]
-        public void GivenTheSecondNumberIs(int number)
+        public void GivenTheSecondNumberIs(decimal number)
         {
             //TODO: implement arrange (precondition) logic
 
@@ -40,8 +40,8 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
         {
             foreach(var row in table.Rows)
             {
-                _firstNumber = int.Parse(row["First Number"]);
-                _secondNumber = int.Parse(row["Second Number"]);
+                _firstNumber = decimal.Parse(row["First Number"]);
+                _secondNumber = decimal.Parse(row["Second Number"]);
             }
         }
 
@@ -70,7 +70,7 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
             _result = 0;
             foreach (var row in _table.Rows)
             {
-                _result += int.Parse(row["First Number"]) * int.Parse(row["Second Number"]);
+                _result += decimal.Parse(row["First Number"]) * decimal.Parse(row["Second Number"]);
             }   
         }
 
@@ -81,14 +81,14 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
             foreach (var row in _table.Rows)
             {
                 int count = 0;
-                int sub = 0;
+                decimal sub = 0;
 
                 foreach (var r in row.Values)
                 {
                     if (string.IsNullOrEmpty(r))
                         continue;
 
-                    sub += int.Parse(r);
+                    sub += decimal.Parse(r);
                     count++;
                 }
 
@@ -98,7 +98,7 @@ namespace Cactus.ReqnrollSampleTest.StepDefinitions
         }
 
         [Then("the result should be (.*)")]
-        public void ThenTheResultShouldBe(int result)
+        public void ThenTheResultShouldBe(decimal result)
         {
             Assert.That(_result, Is.EqualTo(result));
         }

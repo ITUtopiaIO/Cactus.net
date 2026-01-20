@@ -105,7 +105,7 @@ namespace Cactus.ExcelConverterTest.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/ConverterTests.feature.ndjson", 5);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/ConverterTests.feature.ndjson", 6);
         }
         
         [global::NUnit.Framework.TestAttribute()]
@@ -113,6 +113,7 @@ namespace Cactus.ExcelConverterTest.Features
         [global::NUnit.Framework.TestCaseAttribute("Simple Excel", "SampleTest.xlsx", "SampleTest.feature", "SampleTest.exp", "0", null)]
         [global::NUnit.Framework.TestCaseAttribute("Simple Excel with Space", "SampleTestWSpace.xlsx", "SampleTestWSpace.feature", "SampleTestWSpace.exp", "1", null)]
         [global::NUnit.Framework.TestCaseAttribute("Excel with Data Grid", "DataGrid.xlsx", "DataGrid.feature", "DataGrid.exp", "2", null)]
+        [global::NUnit.Framework.TestCaseAttribute("Formula Test", "FormulaTest.xlsx", "FormulaTest.feature", "FormulaTest.exp", "3", null)]
         public async global::System.Threading.Tasks.Task ConvertExcelToFeatureFile(string @case, string excelFile, string convertedFeature, string expectedFeature, string @__pickleIndex, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -125,7 +126,7 @@ namespace Cactus.ExcelConverterTest.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Convert Excel to Feature File", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 7
+#line 6
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -135,17 +136,17 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 8
+#line 7
 await testRunner.GivenAsync(string.Format("I have an Excel file \"{0}\"", excelFile), ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 9
+#line 8
 await testRunner.WhenAsync("I convert the Excel file to a feature file", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 10
+#line 9
 await testRunner.ThenAsync(string.Format("I should have a feature file \"{0}\"", convertedFeature), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 11
-await testRunner.AndAsync(string.Format("the feature file should exactly match with \"{0}\"", expectedFeature), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 10
+await testRunner.AndAsync(string.Format("the feature file should exactly match with \"{0}\" except empty lines", expectedFeature), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

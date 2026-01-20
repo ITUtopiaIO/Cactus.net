@@ -65,6 +65,18 @@ namespace Cactus.ExcelConverterTest.StepDefinitions
             CheckFeatureFileMatchWith(expectedFile, folder, ignoreTableFormat: false);
         }
 
+        [Then("the feature file should exactly match with {string} except empty lines")]
+        public void ThenTheFeatureFileExactlyShouldMatchWithExceptEmptyLines(string expectedFile)
+        {
+            ThenTheFeatureFileShouldExactlyMatchWithExceptEmptyLines(expectedFile, DEFAULT_FOLDER);
+        }
+
+        [Then("the feature file should exactly match with {string} in the {string} folder except empty lines")]
+        public void ThenTheFeatureFileShouldExactlyMatchWithExceptEmptyLines(string expectedFile, string folder)
+        {
+            CheckFeatureFileMatchWith(expectedFile, folder, ignoreTableFormat: false, ignoreEmptyLine: true);
+        }
+
         [Then("the feature file should match with {string}")]
         public void ThenTheFeatureFileShouldMatchWith(string expectedFile)
         {
@@ -77,11 +89,11 @@ namespace Cactus.ExcelConverterTest.StepDefinitions
             CheckFeatureFileMatchWith(expectedFile, folder, ignoreTableFormat: true);
         }
 
-        private void CheckFeatureFileMatchWith(string expectedFile, string folder, bool ignoreTableFormat)
+        private void CheckFeatureFileMatchWith(string expectedFile, string folder, bool ignoreTableFormat, bool ignoreEmptyLine = false)
         {
             FileDiff fileDiff = new FileDiff();
             string _expectedFile = Path.Combine(folder, expectedFile);
-            string result = fileDiff.GetFileDiff(_featureFile, _expectedFile, ignoreEmptyLine: false, ignoreTableFormat: ignoreTableFormat);
+            string result = fileDiff.GetFileDiff(_featureFile, _expectedFile, ignoreEmptyLine, ignoreTableFormat: ignoreTableFormat);
             Assert.That(result, Is.Empty);
         }
 
