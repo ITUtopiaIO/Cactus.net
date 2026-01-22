@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Spectre.Console" Version="0.54.0" />
+    <PackageReference Include="Spectre.Console.Cli" Version="0.53.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Cactus.Cucumber\Cactus.Cucumber.csproj" />
     <ProjectReference Include="..\Cactus.ExcelConverter.MiniExcelConverter\Cactus.ExcelConverter.MiniExcelConverter.csproj" />
     <ProjectReference Include="..\Cactus.ExcelConverter\Cactus.ExcelConverter.csproj" />
