@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DiffPlex\DiffPlex.csproj" />
+    <ProjectReference Include="..\..\lib\DiffPlex\DiffPlex.csproj" />
   </ItemGroup>
 
   <ItemGroup>

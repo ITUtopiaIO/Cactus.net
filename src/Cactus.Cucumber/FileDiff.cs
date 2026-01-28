@@ -1,9 +1,9 @@
-using NUnit.Framework.Internal;
 using DiffPlex;
 using System.Text;
-using Cactus.Cucumber;
 
-namespace Cactus.CucumberTest
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Cactus.CucumberTest")]
+
+namespace Cactus.Cucumber
 {
     public class FileDiff
     {

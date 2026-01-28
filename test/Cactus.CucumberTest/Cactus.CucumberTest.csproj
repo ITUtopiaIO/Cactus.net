@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\lib\DiffPlex\DiffPlex.csproj" />
     <ProjectReference Include="..\..\src\Cactus.Cucumber\Cactus.Cucumber.csproj" />
-    <ProjectReference Include="..\DiffPlex\DiffPlex.csproj" />
   </ItemGroup>
 
   <ItemGroup>

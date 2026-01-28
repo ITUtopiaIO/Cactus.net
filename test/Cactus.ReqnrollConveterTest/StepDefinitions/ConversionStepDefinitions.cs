@@ -1,4 +1,4 @@
-using Cactus.CucumberTest;
+using Cactus.Cucumber;
 using NUnit.Framework;
 
 namespace Cactus.ReqnrollTest.StepDefinitions

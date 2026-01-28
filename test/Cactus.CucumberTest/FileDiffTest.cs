@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cactus.Cucumber; // Add this using
 
 namespace Cactus.CucumberTest
 {
@@ -12,12 +13,10 @@ namespace Cactus.CucumberTest
     {
         readonly string DEFAULT_FOLDER = "Files";
 
-
         [SetUp]
         public void Setup()
         {
         }
-
 
         [Test]
         public void OutputIsAsExpected()
@@ -38,7 +37,6 @@ namespace Cactus.CucumberTest
             string result = fileDiff.GetFileDiff(outputFile, expectedFile);
             Assert.That(result, Is.Not.Empty);
         }
-
 
         [Test]
         public void OutputHasExtraLines()
@@ -105,6 +103,5 @@ namespace Cactus.CucumberTest
 
         }
     }
-
 
 }

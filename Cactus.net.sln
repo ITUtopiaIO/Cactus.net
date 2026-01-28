@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.7.34221.43
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{DDF2B39C-05B7-4188-99C9-93911FE63DD6}"
 	ProjectSection(SolutionItems) = preProject
@@ -30,13 +30,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.ExcelConverter", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cactus.ExcelConverter.MiniExcelConverter", "src\Cactus.ExcelConverter.MiniExcelConverter\Cactus.ExcelConverter.MiniExcelConverter.csproj", "{D0463C35-74AB-4958-ABB2-697103F91404}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiffPlex", "test\DiffPlex\DiffPlex.csproj", "{AC895C9F-41F7-42CD-B734-43C72D947CFB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.ReqnrollConverterTest", "test\Cactus.ReqnrollConveterTest\Cactus.ReqnrollConverterTest.csproj", "{2C5B9CDC-8F5A-43A7-99CF-0E6643C067EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.ReqnrollVerificationTest", "test\Cactus.ReqnrollVerificationTest\Cactus.ReqnrollVerificationTest.csproj", "{88A85963-7130-434B-A8F1-F4595507484A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cactus.ExcelConverterTest", "test\Cactus.ExcelConverterTest\Cactus.ExcelConverterTest.csproj", "{497DD3D7-5203-2382-CCC7-8C198E041B9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{9D95BE55-FB0B-4D4D-B6CB-95E6D57B0613}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffPlex", "lib\DiffPlex\DiffPlex.csproj", "{1FDF5504-4C47-1565-87E1-15B522295A16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,10 +78,6 @@ Global
 		{D0463C35-74AB-4958-ABB2-697103F91404}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0463C35-74AB-4958-ABB2-697103F91404}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0463C35-74AB-4958-ABB2-697103F91404}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC895C9F-41F7-42CD-B734-43C72D947CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC895C9F-41F7-42CD-B734-43C72D947CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC895C9F-41F7-42CD-B734-43C72D947CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC895C9F-41F7-42CD-B734-43C72D947CFB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C5B9CDC-8F5A-43A7-99CF-0E6643C067EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C5B9CDC-8F5A-43A7-99CF-0E6643C067EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C5B9CDC-8F5A-43A7-99CF-0E6643C067EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -92,6 +90,10 @@ Global
 		{497DD3D7-5203-2382-CCC7-8C198E041B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{497DD3D7-5203-2382-CCC7-8C198E041B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{497DD3D7-5203-2382-CCC7-8C198E041B9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FDF5504-4C47-1565-87E1-15B522295A16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FDF5504-4C47-1565-87E1-15B522295A16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FDF5504-4C47-1565-87E1-15B522295A16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FDF5504-4C47-1565-87E1-15B522295A16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,10 +107,10 @@ Global
 		{F7ED8699-E0BF-4ABE-9B81-DF91D661AA4B} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 		{5B976B30-A6D0-4A03-B139-9EEAAB54D29F} = {59476B3B-E737-4F49-8164-04448E7389AA}
 		{D0463C35-74AB-4958-ABB2-697103F91404} = {59476B3B-E737-4F49-8164-04448E7389AA}
-		{AC895C9F-41F7-42CD-B734-43C72D947CFB} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 		{2C5B9CDC-8F5A-43A7-99CF-0E6643C067EC} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 		{88A85963-7130-434B-A8F1-F4595507484A} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
 		{497DD3D7-5203-2382-CCC7-8C198E041B9E} = {DCC4FB89-2649-4D1D-9067-6A0964BBEE6A}
+		{1FDF5504-4C47-1565-87E1-15B522295A16} = {9D95BE55-FB0B-4D4D-B6CB-95E6D57B0613}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A757270-A1E5-443E-AAE5-4ECBE36C473A}
