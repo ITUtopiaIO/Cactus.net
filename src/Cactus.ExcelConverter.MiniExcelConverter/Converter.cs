@@ -18,11 +18,11 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
         string _excelFile = string.Empty;
         string _featureFile = string.Empty;
 
-        public string ConvertExcelToFeature(string excelFileName) 
+        public string ConvertExcelToFeature(string excelFileName, string extension) 
         {
 
             _excelFile = excelFileName;
-            _featureFile = Path.ChangeExtension(excelFileName, ".feature");
+            _featureFile = Path.ChangeExtension(excelFileName, extension);
 
             using (StreamWriter outputFile = new StreamWriter(_featureFile))
             {

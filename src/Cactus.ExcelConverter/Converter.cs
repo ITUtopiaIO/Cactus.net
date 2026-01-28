@@ -14,9 +14,9 @@ namespace Cactus.ExcelConverter
             converter = new MiniExcelConverter.Converter();
         }
 
-        public string ConvertExcelToFeature(string excelFileName)
+        public string ConvertExcelToFeature(string excelFileName, string extension=".feature")
         {
-            return converter.ConvertExcelToFeature(excelFileName);
+            return converter.ConvertExcelToFeature(excelFileName, extension);
         }
     }
 

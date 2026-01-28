@@ -16,12 +16,25 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
     {
         [CommandArgument(0, "[FileOrPath]")]
         public string? FileOrPath { get; set; }
+
+
+        private string _fileExtension = ".feature";
+        [CommandOption("-e|--ext")]
+        [Description("Specify the file extension of the generated feature file (default is .feature).")]
+        [DefaultValue("feature")]
+        public string FileExtension 
+        { 
+            get => _fileExtension;
+            set
+            { _fileExtension = "."+value; } 
+        }
     }
 
 
     public override async Task<int> ExecuteAsync(CommandContext context, Settings settings, CancellationToken cancellationToken)
     {
         var fileOrPath = settings.FileOrPath;
+        var fileExtension = settings.FileExtension;
 
         if (fileOrPath is null)
         {
@@ -35,7 +48,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         try
         {
             Cactus.ExcelConverter.Converter converter = new Cactus.ExcelConverter.Converter();
-            String _featureFile = converter.ConvertExcelToFeature(fileOrPath);
+            String _featureFile = converter.ConvertExcelToFeature(fileOrPath, fileExtension);
             AnsiConsole.WriteLine("Feature file created: " + _featureFile);
             return 0;
         }
