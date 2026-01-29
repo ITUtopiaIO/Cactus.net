@@ -26,8 +26,13 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         { 
             get => _fileExtension;
             set
-            { _fileExtension = "."+value; } 
+            { _fileExtension = value.StartsWith(".") ? value: "."+value; } 
         }
+
+        [CommandOption("-d|--IncSubDir")]
+        [Description("Specify whether to process subdirectory files or not (default is false).")]
+        [DefaultValue("false")]
+        public bool IncludeSubdirectories { get; set; } = false;
     }
 
 
@@ -35,6 +40,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
     {
         var fileOrPath = settings.FileOrPath;
         var fileExtension = settings.FileExtension;
+        var includeSubdirectories = settings.IncludeSubdirectories;
 
         if (fileOrPath is null)
         {
@@ -47,9 +53,31 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
 
         try
         {
-            Cactus.ExcelConverter.Converter converter = new Cactus.ExcelConverter.Converter();
-            String _featureFile = converter.ConvertExcelToFeature(fileOrPath, fileExtension);
-            AnsiConsole.WriteLine("Feature file created: " + _featureFile);
+            if (File.Exists(fileOrPath))
+            {
+                var fileInfo = new FileInfo(fileOrPath);
+                string exactFileName = fileInfo.Directory?.GetFiles(fileInfo.Name)[0].Name ?? fileInfo.Name;
+
+                ConvertExcelToFeature(exactFileName, fileExtension);
+                
+            }
+            else if (Directory.Exists(fileOrPath))
+            {
+                SearchOption searchOption = includeSubdirectories ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
+
+                var excelFiles = Directory.GetFiles(fileOrPath, "*.xlsx", searchOption);
+
+                foreach (var excelFile in excelFiles)
+                {
+                    ConvertExcelToFeature(excelFile, fileExtension);
+                }
+            }
+            else
+            {
+                AnsiConsole.WriteLine("The specified file or path does not exist.");
+                return -1;
+            }
+
             return 0;
         }
         catch (Exception ex)
@@ -58,6 +86,14 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
             AnsiConsole.WriteException(ex);
             return -2;
         }
+    }
+
+    private void ConvertExcelToFeature(string excelFileName, string extension)
+    {
+        AnsiConsole.WriteLine("Converting " + excelFileName +" to a feature file.");
+        Cactus.ExcelConverter.Converter converter = new Cactus.ExcelConverter.Converter();
+        String _featureFile = converter.ConvertExcelToFeature(excelFileName, extension);
+        AnsiConsole.WriteLine("Feature file created: " + _featureFile);
     }
 }
 
