@@ -7,7 +7,13 @@ using System.Runtime.CompilerServices;
 
 var app = new CommandApp<CactusCommand>();
 
-return await app.RunAsync(args);
+if (args.Length == 0)
+{
+    // Inject the help flag manually
+    return app.Run(new[] { "--help" });
+}
+else
+    return await app.RunAsync(args);
 
 
 public class CactusCommand : AsyncCommand<CactusCommand.Settings>
@@ -58,8 +64,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
 
         if (fileOrPath is null)
         {
-            AnsiConsole.WriteLine("Please provide the path to the Excel file you want to convert.");
-            AnsiConsole.WriteLine("For Help: Cactus -h");
+            AnsiConsole.WriteLine("Please provide the Excel file or the path you want to convert.");
             return -1;
         }
 
@@ -89,6 +94,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
             else
             {
                 AnsiConsole.WriteLine("The specified file or path does not exist.");
+                AnsiConsole.WriteLine("For Help: Cactus -h");
                 return -1;
             }
 
