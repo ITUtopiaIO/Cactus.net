@@ -42,9 +42,9 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         public bool IncludeSubdirectories { get; set; } = false;
 
 
-        [CommandOption("-t|--tgtSubDir")]
-        [Description("Specify the target subdirectory to save the generated feature files.")]
-        public string? TargetSubdirectory { get; set; }
+        [CommandOption("-t|--tgtDir")]
+        [Description("Specify the target directory or sub directory to save the generated feature files.")]
+        public string? TargetDirectory { get; set; }
 
 
         [CommandOption("-c|--cloak")]
@@ -59,7 +59,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         var fileOrPath = settings.FileOrPath;
         var fileExtension = settings.FileExtension;
         var includeSubdirectories = settings.IncludeSubdirectories;
-        var targetSubdirectory = settings.TargetSubdirectory;
+        var targetDirectory = settings.TargetDirectory;
         var cloakMode = settings.CloakMode;
 
         if (fileOrPath is null)
@@ -79,7 +79,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
                 var fileInfo = new FileInfo(fileOrPath);
                 string exactFileName = fileInfo.Directory?.GetFiles(fileInfo.Name)[0].Name ?? fileInfo.Name;
 
-                ConvertExcelToFeature(exactFileName, fileExtension, targetSubdirectory, cloakMode);
+                ConvertExcelToFeature(exactFileName, fileExtension, targetDirectory, cloakMode);
                 
             }
             else if (Directory.Exists(fileOrPath))
@@ -90,7 +90,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
 
                 foreach (var excelFile in excelFiles)
                 {
-                    ConvertExcelToFeature(excelFile, fileExtension, targetSubdirectory, cloakMode);
+                    ConvertExcelToFeature(excelFile, fileExtension, targetDirectory, cloakMode);
                 }
             }
             else
@@ -109,12 +109,12 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         }
     }
 
-    private void ConvertExcelToFeature(string excelFileName, string extension, string? targetSubdirectory, bool cloakMode)
+    private void ConvertExcelToFeature(string excelFileName, string extension, string? targetDirectory, bool cloakMode)
     {
         string outputDirectory = Path.GetDirectoryName(excelFileName) ?? string.Empty;
-        if (!string.IsNullOrEmpty(targetSubdirectory))
+        if (!string.IsNullOrEmpty(targetDirectory))
         {
-            outputDirectory = Path.Combine(outputDirectory, targetSubdirectory);
+            outputDirectory = Path.Combine(outputDirectory, targetDirectory);
             Directory.CreateDirectory(outputDirectory);
         }
         string outputFileName = Path.GetFileNameWithoutExtension(excelFileName) + extension;
