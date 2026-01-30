@@ -16,12 +16,19 @@ namespace Cactus.ExcelConverter
 
         public string ConvertExcelToFeature(string excelFileName, string extension=".feature")
         {
+            string _featureFile = Path.ChangeExtension(excelFileName, extension);
+
+            return this.ConvertExcelToFeatureNamed(excelFileName, _featureFile);
+        }
+
+        public string ConvertExcelToFeatureNamed(string excelFileName, string featureFileName)
+        {
             if (!File.Exists(excelFileName))
             {
                 throw new FileNotFoundException("The specified Excel file does not exist: " + excelFileName);
             }
 
-            return converter.ConvertExcelToFeature(excelFileName, extension);
+            return converter.ConvertExcelToFeatureNamed(excelFileName, featureFileName);
         }
     }
 

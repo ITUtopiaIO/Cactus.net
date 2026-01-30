@@ -29,10 +29,17 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
             { _fileExtension = value.StartsWith(".") ? value: "."+value; } 
         }
 
-        [CommandOption("-d|--IncSubDir")]
+
+        [CommandOption("-i|--incSubDir")]
         [Description("Specify whether to process subdirectory files or not (default is false).")]
         [DefaultValue("false")]
         public bool IncludeSubdirectories { get; set; } = false;
+
+
+        [CommandOption("-t|--tgtSubDir")]
+        [Description("Specify the target subdirectory to save the generated feature files.")]
+        public string? TargetSubdirectory { get; set; }
+
     }
 
 
@@ -41,6 +48,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         var fileOrPath = settings.FileOrPath;
         var fileExtension = settings.FileExtension;
         var includeSubdirectories = settings.IncludeSubdirectories;
+        var targetSubdirectory = settings.TargetSubdirectory;
 
         if (fileOrPath is null)
         {
@@ -58,7 +66,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
                 var fileInfo = new FileInfo(fileOrPath);
                 string exactFileName = fileInfo.Directory?.GetFiles(fileInfo.Name)[0].Name ?? fileInfo.Name;
 
-                ConvertExcelToFeature(exactFileName, fileExtension);
+                ConvertExcelToFeature(exactFileName, fileExtension, targetSubdirectory);
                 
             }
             else if (Directory.Exists(fileOrPath))
@@ -69,7 +77,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
 
                 foreach (var excelFile in excelFiles)
                 {
-                    ConvertExcelToFeature(excelFile, fileExtension);
+                    ConvertExcelToFeature(excelFile, fileExtension, targetSubdirectory);
                 }
             }
             else
@@ -88,11 +96,20 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         }
     }
 
-    private void ConvertExcelToFeature(string excelFileName, string extension)
+    private void ConvertExcelToFeature(string excelFileName, string extension, string? targetSubdirectory)
     {
-        AnsiConsole.WriteLine("Converting " + excelFileName +" to a feature file.");
+        string outputDirectory = Path.GetDirectoryName(excelFileName) ?? string.Empty;
+        if (!string.IsNullOrEmpty(targetSubdirectory))
+        {
+            outputDirectory = Path.Combine(outputDirectory, targetSubdirectory);
+            Directory.CreateDirectory(outputDirectory);
+        }
+        string outputFileName = Path.GetFileNameWithoutExtension(excelFileName) + extension;
+        string featureFielName = Path.Combine(outputDirectory, outputFileName);
+
+        AnsiConsole.WriteLine($"Converting {excelFileName} to {featureFielName}.");
         Cactus.ExcelConverter.Converter converter = new Cactus.ExcelConverter.Converter();
-        String _featureFile = converter.ConvertExcelToFeature(excelFileName, extension);
+        string _featureFile = converter.ConvertExcelToFeatureNamed(excelFileName, featureFielName);
         AnsiConsole.WriteLine("Feature file created: " + _featureFile);
     }
 }
