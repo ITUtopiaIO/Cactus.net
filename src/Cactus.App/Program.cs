@@ -65,6 +65,8 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         if (fileOrPath is null)
         {
             AnsiConsole.WriteLine("Please provide the Excel file or the path you want to convert.");
+            AnsiConsole.WriteLine("For Help: Cactus -h");
+
             return -1;
         }
 
@@ -94,7 +96,6 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
             else
             {
                 AnsiConsole.WriteLine("The specified file or path does not exist.");
-                AnsiConsole.WriteLine("For Help: Cactus -h");
                 return -1;
             }
 
