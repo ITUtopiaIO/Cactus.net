@@ -8,6 +8,6 @@ namespace Cactus.Cucumber
 {
     public interface IConverter
     {
-        public string ConvertExcelToFeatureNamed(string excelFileName, string featureFileName);
+        public string ConvertExcelToFeatureNamed(string excelFileName, string featureFileName, bool cloakMode = false);
     }
 }

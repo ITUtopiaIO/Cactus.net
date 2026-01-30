@@ -14,21 +14,20 @@ namespace Cactus.ExcelConverter
             converter = new MiniExcelConverter.Converter();
         }
 
-        public string ConvertExcelToFeature(string excelFileName, string extension=".feature")
+        public string ConvertExcelToFeature(string excelFileName, string extension=".feature", bool cloakMode = false)
         {
             string _featureFile = Path.ChangeExtension(excelFileName, extension);
-
-            return this.ConvertExcelToFeatureNamed(excelFileName, _featureFile);
+            return this.ConvertExcelToFeatureNamed(excelFileName, _featureFile, cloakMode);
         }
 
-        public string ConvertExcelToFeatureNamed(string excelFileName, string featureFileName)
+        public string ConvertExcelToFeatureNamed(string excelFileName, string featureFileName, bool cloakMode = false)
         {
             if (!File.Exists(excelFileName))
             {
                 throw new FileNotFoundException("The specified Excel file does not exist: " + excelFileName);
             }
 
-            return converter.ConvertExcelToFeatureNamed(excelFileName, featureFileName);
+            return converter.ConvertExcelToFeatureNamed(excelFileName, featureFileName, cloakMode);
         }
     }
 

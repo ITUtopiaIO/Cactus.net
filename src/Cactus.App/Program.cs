@@ -40,6 +40,11 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         [Description("Specify the target subdirectory to save the generated feature files.")]
         public string? TargetSubdirectory { get; set; }
 
+
+        [CommandOption("-c|--cloak")]
+        [Description("Enable cloak mode: do not add date/time stamp to the feature header line.")]
+        [DefaultValue("false")]
+        public bool CloakMode { get; set; } = false;
     }
 
 
@@ -49,6 +54,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         var fileExtension = settings.FileExtension;
         var includeSubdirectories = settings.IncludeSubdirectories;
         var targetSubdirectory = settings.TargetSubdirectory;
+        var cloakMode = settings.CloakMode;
 
         if (fileOrPath is null)
         {
@@ -66,7 +72,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
                 var fileInfo = new FileInfo(fileOrPath);
                 string exactFileName = fileInfo.Directory?.GetFiles(fileInfo.Name)[0].Name ?? fileInfo.Name;
 
-                ConvertExcelToFeature(exactFileName, fileExtension, targetSubdirectory);
+                ConvertExcelToFeature(exactFileName, fileExtension, targetSubdirectory, cloakMode);
                 
             }
             else if (Directory.Exists(fileOrPath))
@@ -77,7 +83,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
 
                 foreach (var excelFile in excelFiles)
                 {
-                    ConvertExcelToFeature(excelFile, fileExtension, targetSubdirectory);
+                    ConvertExcelToFeature(excelFile, fileExtension, targetSubdirectory, cloakMode);
                 }
             }
             else
@@ -96,7 +102,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         }
     }
 
-    private void ConvertExcelToFeature(string excelFileName, string extension, string? targetSubdirectory)
+    private void ConvertExcelToFeature(string excelFileName, string extension, string? targetSubdirectory, bool cloakMode)
     {
         string outputDirectory = Path.GetDirectoryName(excelFileName) ?? string.Empty;
         if (!string.IsNullOrEmpty(targetSubdirectory))
@@ -109,7 +115,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
 
         AnsiConsole.WriteLine($"Converting {excelFileName} to {featureFielName}.");
         Cactus.ExcelConverter.Converter converter = new Cactus.ExcelConverter.Converter();
-        string _featureFile = converter.ConvertExcelToFeatureNamed(excelFileName, featureFielName);
+        string _featureFile = converter.ConvertExcelToFeatureNamed(excelFileName, featureFielName, cloakMode);
         AnsiConsole.WriteLine("Feature file created: " + _featureFile);
     }
 }
