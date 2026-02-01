@@ -4,11 +4,23 @@ using Spectre.Console;
 using Spectre.Console.Cli;
 using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
 
 var app = new CommandApp<CactusCommand>();
+
+var version = Assembly.GetEntryAssembly()?
+    .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
+    .InformationalVersion ?? "1.0.0";
+
+app.Configure(config =>
+{
+    // Override "app.dll" with "app" or your custom tool name
+    config.SetApplicationName("Cactus");
+    config.SetApplicationVersion(version);
+});
 
 if (args.Length == 0)
 {
@@ -19,7 +31,7 @@ else
     return await app.RunAsync(args);
 
 
-
+[Description(@"Cactus.net - Convert Excel files to Gherkin feature files. A product by ITUtopia LLC (https://github.com/ITUtopiaIO/Cactus.net).")]
 public class CactusCommand : AsyncCommand<CactusCommand.Settings>
 {
     public class Settings : CommandSettings
@@ -58,15 +70,15 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
 
 
         [CommandOption("-m|--match")]
-        [Description("To match with an exist feature file")]
+        [Description("Match with an exist feature file")]
         [DefaultValue("false")]
         public bool Match { get; set; } = false;
 
 
         private string _matchExtension = ".feature";
         [CommandOption("-x|--matchExt")]
-        [Description("Specify the file extension to match against (default is .feature).")]
-        [DefaultValue(".feature")]
+        [Description("Specify the file extension to match with (default is .feature).")]
+        [DefaultValue("feature")]
         public string MatchExtension
         {
             get => _matchExtension;
@@ -75,17 +87,15 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
 
 
         [CommandOption("-r|--matchDir")]
-        [Description("Specify the directory to match against.")]
+        [Description("Specify the directory to match with.")]
         public string? MatchDirectory { get; set; }
 
 
         [CommandOption("-z|--zombie")]
-        [Description("Zombie mode: continue processing all files even if errors, exceptions, or mismatches occur.")]
+        [Description("Enable zombie mode: continue processing all files even if errors, exceptions, or mismatches occur.")]
         [DefaultValue("false")]
         public bool ZombieMode { get; set; } = false;
 
-
-        //v/version
         //o/output/implementation, specflow/reqnroll version
     }
 
