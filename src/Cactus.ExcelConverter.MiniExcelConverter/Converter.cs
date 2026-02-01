@@ -76,7 +76,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                             AddRowToTable(table, row, true);
                             isReadingTable = true;
                         }
-                        else if (isReadingTable & !emptyRow)
+                        else if (isReadingTable && String.IsNullOrEmpty(Convert.ToString(row.A)) && !emptyRow)
                         {
                             AddRowToTable(table, row, false);
                         }
