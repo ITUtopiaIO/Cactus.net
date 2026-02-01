@@ -102,52 +102,66 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         var matchDirectory = settings.MatchDirectory;
         var zombieMode = settings.ZombieMode;
 
+        int totalFiles = 0, processedCount = 0, successCount = 0, errorCount = 0, mismatchCount = 0, matchSkippedCount = 0;
+
         if (fileOrPath is null)
         {
             AnsiConsole.WriteLine("Please provide the Excel file or the path you want to convert.");
             AnsiConsole.WriteLine("For Help: Cactus -h");
 
-            return Status.FILENOTFOUND;
+            return Status.ERROR;
         }
 
         AnsiConsole.MarkupLine($"[green]Processing file or path:[/] {fileOrPath}");
 
         try
         {
-            bool hadError = false;
             if (File.Exists(fileOrPath))
             {
+                // Single file processing
+                totalFiles = 1;
                 var fileInfo = new FileInfo(fileOrPath);
                 string exactFileName = fileInfo.Directory?.GetFiles(fileInfo.Name)[0].Name ?? fileInfo.Name;
 
-                processFile(exactFileName, fileExtension, targetDirectory, cloakMode, match, matchExtension, matchDirectory);
+                var status = processFile(exactFileName, fileExtension, targetDirectory, cloakMode, match, matchExtension, matchDirectory);
+                if (status == Status.SUCCESS) successCount++;
+                else if (status == Status.MISMATCH) mismatchCount++;
+                else if (status == Status.MATCHSKIPPED) matchSkippedCount++;
+                else errorCount++;
 
+                PrintSummary(totalFiles, totalFiles, successCount, errorCount, mismatchCount, matchSkippedCount, match);
+                return status;
             }
             else if (Directory.Exists(fileOrPath))
             {
-                SearchOption searchOption = includeSubdirectories ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
-
-                var excelFiles = Directory.GetFiles(fileOrPath, "*.xlsx", searchOption);
-
+                // Directory processing
+                var excelFiles = Directory.GetFiles(fileOrPath, "*.xlsx", includeSubdirectories ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
+                totalFiles = excelFiles.Length;
                 foreach (var excelFile in excelFiles)
                 {
-                    var status = processFile(excelFile, fileExtension, targetDirectory, cloakMode, match, matchExtension, matchDirectory);
-                    if (status != Status.SUCCESS)
-                    {
-                        if (!zombieMode)
-                            return status;
+                    AnsiConsole.MarkupLine($"\n[blue]Processing file #{++processedCount} of {totalFiles} :[/]");
 
-                        hadError = true;
+                    var status = processFile(excelFile, fileExtension, targetDirectory, cloakMode, match, matchExtension, matchDirectory);
+                    if (status == Status.SUCCESS) successCount++;
+                    else if (status == Status.MISMATCH) mismatchCount++;
+                    else if (status == Status.MATCHSKIPPED) matchSkippedCount++;
+                    else errorCount++;
+
+                    if (status != Status.SUCCESS && !zombieMode)
+                    {
+                        PrintSummary(totalFiles, processedCount, successCount, errorCount, mismatchCount, matchSkippedCount, match);
+                        return status;
                     }
                 }
+                
+                PrintSummary(totalFiles, processedCount, successCount, errorCount, mismatchCount, matchSkippedCount, match);
+                return Status.SUCCESS;
             }
             else
             {
                 AnsiConsole.WriteLine("The specified file or path does not exist.");
-                return Status.FILENOTFOUND;
+                return Status.ERROR;
             }
-
-            return hadError ? Status.ERROR : Status.SUCCESS;
         }
         catch (Exception ex)
         {
@@ -199,7 +213,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
                 if (!File.Exists(matchFile))
                 {
                     AnsiConsole.MarkupLine($"[yellow]WARNING[/] : Matching file {matchFile} does not exist. Skipping matching.");
-                    return Status.FILENOTFOUND;
+                    return Status.MATCHSKIPPED;
                 }
                 else 
                 {
@@ -233,8 +247,22 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
         }
         catch (Exception ex)
         {
-            AnsiConsole.WriteLine($"[red]ERROR[/] processing {excelFileName}: {ex.Message}");
+            AnsiConsole.WriteException(ex);
             return Status.EXCEPTION;
+        }
+    }
+
+    private void PrintSummary(int totalFiles, int processedCount, int successCount, int errorCount, int mismatchCount, int matchSkippedCount, bool match)
+    {
+        AnsiConsole.MarkupLine($"\n[bold]Summary:[/]");
+        AnsiConsole.MarkupLine($"[blue]Total Files:[/] {totalFiles}");
+        AnsiConsole.MarkupLine($"[blue]Processed:[/] {processedCount}");
+        AnsiConsole.MarkupLine($"[green]Success:[/] {successCount}");
+        AnsiConsole.MarkupLine($"[red]Error:[/] {errorCount}");
+        if (match)
+        {
+            AnsiConsole.MarkupLine($"[yellow]Mismatch:[/] {mismatchCount}");
+            AnsiConsole.MarkupLine($"[yellow]Match skipped:[/] {matchSkippedCount}");
         }
     }
 }
@@ -245,6 +273,6 @@ class Status
     public static readonly int SUCCESS = 0;
     public static readonly int EXCEPTION = -1;
     public static readonly int ERROR = -2;
-    public static readonly int FILENOTFOUND = -3;
-    public static readonly int MISMATCH = -4;
+    public static readonly int MISMATCH = -3;
+    public static readonly int MATCHSKIPPED = -4;
 }
