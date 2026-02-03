@@ -11,13 +11,13 @@ The initial phase of creating the project skeleton with one sample feature conve
 # Wiki and how to
 https://github.com/ITUtopiaIO/Cactus.net/wiki
 
-*USAGE:* <br>
+***USAGE:*** <br>
     Cactus [FileOrPath] [OPTIONS] <br>
 
-*ARGUMENTS:* <br>
+***ARGUMENTS:*** <br>
     [FileOrPath] <br>
 
-*OPTIONS:* <br>
+***OPTIONS:*** <br>
 
 | Option            | Default   | Description   |
 | :---              | :---      | :---          |
