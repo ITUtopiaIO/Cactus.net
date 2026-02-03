@@ -1,7 +1,7 @@
 # Cactus.net 
 By ITUtopia LLC
 
-Writing complex BDD testing cases in Excel with table and formula, and then convert to Cucumber feature file, which can be used by Reqnroll, Specflow, etc.
+Writing complex BDD testing cases in Excel with table and formula, and then convert to Gherkin feature file, which can be used by Cucumber, Reqnroll, Specflow, etc.
 
 # The project is currently in DIP - Dev In Progress.
 
