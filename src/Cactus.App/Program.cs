@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using Cactus.Cucumber;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using System;
@@ -229,29 +230,19 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
                 {
                     AnsiConsole.WriteLine($"Matching generated feature file {featureFielName} with {matchFile}.");
 
-                    bool isMatch = true;
-                    if (isMatch)
-                    {
-                        AnsiConsole.MarkupLine($"[green]MATCHED[/] : {featureFielName} matches {matchFile}");
-                        return Status.SUCCESS;
-                        //Cactus.FeatureMatcher.FeatureMatcher matcher = new Cactus.FeatureMatcher.FeatureMatcher();
-                        //bool isMatch = matcher.MatchFeatureFiles(featureFielName, matchFile);
-                        //if (isMatch)
-                        //{
-                        //    AnsiConsole.MarkupLine($"[green]MATCHED[/] : {featureFielName} matches {matchFile}");
-                        //    return 0;
-                        //}
-                        //else
-                        //{
-                        //    AnsiConsole.MarkupLine($"[red]NOT MATCHED[/] : {featureFielName} does not match {matchFile}");
-                        //    return -2;
-                        //}
-                    }
-                    else
-                    {
-                        AnsiConsole.MarkupLine($"[yellow]WARNING[/] : {featureFielName} does not matches {matchFile}");
-                        return Status.MISMATCH;
-                    }
+                        FileDiff fileDiff = new FileDiff();
+                        string result = fileDiff.GetFileDiff(_featureFile, matchFile, ignoreCommentLine: true);
+                        if (string.IsNullOrEmpty(result))
+                        {
+                            AnsiConsole.MarkupLine($"[green]NO DIFFERENCE[/] : No differences found between coverted {featureFielName} and {matchFile}.");
+                            return Status.SUCCESS;
+                        }
+                        else
+                        {
+                            AnsiConsole.MarkupLine($"[yellow]DIFFERENCE FOUND[/] : Differences between converted {featureFielName} and {matchFile}:\n{result}");
+                            return Status.MISMATCH;
+                        }
+
                 }
             }
         }
