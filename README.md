@@ -11,26 +11,26 @@ The initial phase of creating the project skeleton with one sample feature conve
 # Wiki and how to
 https://github.com/ITUtopiaIO/Cactus.net/wiki
 
-USAGE: <br>
+*USAGE:* <br>
     Cactus [FileOrPath] [OPTIONS] <br>
 
-ARGUMENTS: <br>
+*ARGUMENTS:* <br>
     [FileOrPath] <br>
 
-OPTIONS: <br>
-                       DEFAULT <br>
+*OPTIONS:* <br>
 
-   |a|b|c|
-    |-h, --help         |           |Prints help information| <br>
-    |-v, --version      |           |Prints version information| <br>
-    |-e, --ext          |feature    |Specify the file extension of the generated feature file (default is .feature)| <br>
-    |-i, --incSubDir    |false      |Specify whether to process subdirectory files or not (default is false)| <br>
-    |-t, --tgtDir       |           |Specify the target directory or sub directory to save the generated feature files| <br>
-    |-c, --cloak        |false      |Enable cloak mode: do not add date/time stamp to the feature header line| <br>
-    |-m, --match        |false      |Match with an exist feature file| <br>
-    |-x, --matchExt     |feature    |Specify the file extension to match with (default is .feature)| <br>
-    |-r, --matchDir     |           |Specify the directory to match with| <br>
-    |-z, --zombie       |false      |Enable zombie mode: continue processing all files even if errors, exceptions, or mismatches occur| <br>
+| Option            | Default   | Description   |
+| :---              | :---      | :---          |
+|-h, --help         |           |Prints help information| 
+|-v, --version      |           |Prints version information|
+|-e, --ext          |feature    |Specify the file extension of the generated feature file (default is .feature)| 
+|-i, --incSubDir    |false      |Specify whether to process subdirectory files or not (default is false)| 
+|-t, --tgtDir       |           |Specify the target directory or sub directory to save the generated feature files| 
+|-c, --cloak        |false      |Enable cloak mode: do not add date/time stamp to the feature header line| 
+|-m, --match        |false      |Match with an exist feature file| 
+|-x, --matchExt     |feature    |Specify the file extension to match with (default is .feature)|
+|-r, --matchDir     |           |Specify the directory to match with|
+|-z, --zombie       |false      |Enable zombie mode: continue processing all files even if errors, exceptions, or mismatches occur|
 
 # Code Struction
 Root
