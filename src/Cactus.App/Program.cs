@@ -130,7 +130,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
                 // Single file processing
                 totalFiles = 1;
                 var fileInfo = new FileInfo(fileOrPath);
-                string exactFileName = fileInfo.Directory?.GetFiles(fileInfo.Name)[0].Name ?? fileInfo.Name;
+                string exactFileName = Path.Combine(fileInfo.DirectoryName, fileInfo.Directory?.GetFiles(fileInfo.Name)[0].Name ?? fileInfo.Name);
 
                 var status = processFile(exactFileName, fileExtension, targetDirectory, cloakMode, match, matchExtension, matchDirectory);
                 if (status == Status.SUCCESS) successCount++;
