@@ -1,6 +1,6 @@
-**************************************** DIFFPLEX ****************************************
-** DiffPlex is ported/forked from https://github.com/mmanela/diffplex                   **
-** Modification might have been made after port/forck the original code from Diffplex   **
+**************************************** DIFFPLEX **************************************** <br>
+** DiffPlex is ported/forked from https://github.com/mmanela/diffplex                   ** <br>
+** Modification might have been made after port/forck the original code from Diffplex   ** <br>
 
 
 Apache License
