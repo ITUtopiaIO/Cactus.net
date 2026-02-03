@@ -46,7 +46,7 @@ Root
 
 
 # Third Party softwares
-Following softwares are used in Cactus. We are really grateful for programers who created them! Full list of used software and individual license information can be found at License.3rd Parties.md
+The following softwares are used in Cactus. We are really grateful for programers who created them! Full list of used software and individual license information can be found at License.3rd Parties.md
 
 * MiniExcel https://github.com/mini-software/MiniExcel
 * DiffPlex https://github.com/mmanela/diffplex
