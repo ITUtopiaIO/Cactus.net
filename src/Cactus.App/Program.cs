@@ -231,7 +231,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
                     AnsiConsole.WriteLine($"Matching generated feature file {featureFielName} with {matchFile}.");
 
                         FileDiff fileDiff = new FileDiff();
-                        string result = fileDiff.GetFileDiff(_featureFile, matchFile, ignoreCommentLine: true);
+                        string result = fileDiff.GetFileDiff(_featureFile, matchFile, ignoreCommentLine: true, IgnoreFeatureName: true);
                         if (string.IsNullOrEmpty(result))
                         {
                             AnsiConsole.MarkupLine($"[green]NO DIFFERENCE[/] : No differences found between coverted {featureFielName} and {matchFile}.");
