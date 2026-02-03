@@ -90,7 +90,7 @@ namespace Cactus.Cucumber
                 {
                     continue;
                 }
-                if (ignoreCommentLine && value.Trim().StartsWith("#"))
+                if (ignoreCommentLine && (value.Trim().StartsWith("#") || value.Trim().StartsWith("@")))
                 {
                     continue;
                 }
