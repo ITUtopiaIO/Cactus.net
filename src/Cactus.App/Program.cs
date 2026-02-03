@@ -3,11 +3,9 @@
 using Cactus.Cucumber;
 using Spectre.Console;
 using Spectre.Console.Cli;
-using System;
 using System.ComponentModel;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
+
 
 
 var app = new CommandApp<CactusCommand>();
