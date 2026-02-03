@@ -25,6 +25,6 @@ Root
 # Third Party softwares
 Following softwares are used in Cactus. We are really grateful for programers who created them! Individual license information can be found at License.3rd Parties.md
 
-* DiffPlex: https://github.com/mmanela/diffplex
-* MiniExcel: https://github.com/mini-software/MiniExcel
-*
+* DiffPlex https://github.com/mmanela/diffplex
+* MiniExcel https://github.com/mini-software/MiniExcel
+* Spectre.Console and Spectre.Console.Cli https://github.com/spectreconsole
