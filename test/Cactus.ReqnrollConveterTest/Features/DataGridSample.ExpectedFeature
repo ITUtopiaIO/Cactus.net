@@ -26,6 +26,7 @@ Given I have following list of numbers
  | 50			| 70  |
  | 4.3			 | 12  |
  | -3			 | 11  |
+ #Ignored Line
    
 When I call the SumProduct function  
    

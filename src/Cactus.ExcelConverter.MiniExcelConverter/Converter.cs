@@ -152,7 +152,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
         }
 
 
-        private void AddRowToTable(DataTable table, ExpandoObject row, bool isHeadRow)
+        private bool AddRowToTable(DataTable table, ExpandoObject row, bool isHeadRow)
         {
             if (isHeadRow)
             {
@@ -167,15 +167,26 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                 }
             }
 
+            bool hasData = false;
             DataRow newRow = table.NewRow();
             foreach (var cell in row)
             {
                 if (cell.Value != null && table.Columns.Contains(cell.Key))
                 { 
+                    hasData = true;
                     newRow[cell.Key.ToString()] = GetCellData(cell.Value);
                 }
             }
-            table.Rows.Add(newRow);
+
+            if (hasData)
+            {
+                table.Rows.Add(newRow);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
