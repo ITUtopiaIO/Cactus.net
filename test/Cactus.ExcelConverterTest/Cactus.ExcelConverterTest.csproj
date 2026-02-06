@@ -38,6 +38,12 @@
     <None Update="Features\DataGrid.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Features\DataGridCommentedLine.exp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Features\DataGridCommentedLine.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Features\FormulaTest.exp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

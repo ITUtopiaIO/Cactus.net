@@ -80,6 +80,12 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
                         {
                             AddRowToTable(table, row, false);
                         }
+                        else if (isReadingTable && !String.IsNullOrEmpty(Convert.ToString(row.A)) && Convert.ToString(row.A).StartsWith("#"))
+                        {
+                            //Comment row inside table, will be ignored and not added to the table
+                            //Potential issue: if the comment row is at the end of the table, it actually should be included in the feature file, will review this one later.
+                            continue;    
+                        }
                         else
                         {
                             //End of table if there's an empty row or non-table row
