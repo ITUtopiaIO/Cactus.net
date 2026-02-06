@@ -125,10 +125,14 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
 
         try
         {
-            if (File.Exists(fileOrPath))
+            if (File.Exists(fileOrPath) || File.Exists(fileOrPath+ ".xlsx"))
             {
                 // Single file processing
                 totalFiles = 1;
+                if (!File.Exists(fileOrPath))
+                {
+                    fileOrPath = fileOrPath + ".xlsx";
+                }
                 var fileInfo = new FileInfo(fileOrPath);
                 string exactFileName = Path.Combine(fileInfo.DirectoryName, fileInfo.Directory?.GetFiles(fileInfo.Name)[0].Name ?? fileInfo.Name);
 
