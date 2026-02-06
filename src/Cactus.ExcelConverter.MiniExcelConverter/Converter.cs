@@ -56,7 +56,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
 
                     DataTable table = new DataTable();
                     bool isReadingTable = false;
-                    var rows = MiniExcel.Query(_excelFile, sheetName: sheetName).ToList();
+                    var rows = MiniExcel.QueryRange(_excelFile, sheetName: sheetName, excelType: ExcelType.XLSX, endColumnIndex:100).ToList();
                     foreach (var row in rows)
                     {
                         bool emptyRow = true;
