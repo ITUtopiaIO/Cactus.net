@@ -241,8 +241,9 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
                         }
                         else
                         {
-                            AnsiConsole.MarkupLine($"[yellow]DIFFERENCE FOUND[/] : Differences between converted {featureFielName} and {matchFile}:\n{result}");
-                            return Status.MISMATCH;
+                            AnsiConsole.MarkupLine($"[yellow]DIFFERENCE FOUND[/] : Differences between converted {featureFielName} and {matchFile}:");
+                            AnsiConsole.WriteLine(result);
+                        return Status.MISMATCH;
                         }
 
                 }
