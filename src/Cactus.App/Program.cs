@@ -99,7 +99,7 @@ public class CactusCommand : AsyncCommand<CactusCommand.Settings>
     }
 
 
-    public override async Task<int> ExecuteAsync(CommandContext context, Settings settings, CancellationToken cancellationToken)
+    protected override async Task<int> ExecuteAsync(CommandContext context, Settings settings, CancellationToken cancellationToken)
     {
         var fileOrPath = settings.FileOrPath;
         var fileExtension = settings.FileExtension;
