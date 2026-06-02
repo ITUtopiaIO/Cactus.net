@@ -19,7 +19,7 @@ namespace Cactus.MiniExcelNUnitTest
             var Rows = MiniExcel.Query(_file).ToList();
 
 
-            Assert.Multiple(() =>
+            Assert.Multiple((System.Action)(() =>
             {
                 Assert.That(Rows.Count, Is.EqualTo(2));
 
@@ -27,7 +27,7 @@ namespace Cactus.MiniExcelNUnitTest
                 Assert.That(((String)Rows[0].B).Trim(), Is.EqualTo("Sample"));
                 Assert.That(Rows[1].A, Is.EqualTo(1));
                 Assert.That(Rows[1].B, Is.EqualTo(2));
-            });
+            }));
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace Cactus.MiniExcelNUnitTest
 
                 if (sheetName == "Sheet2")
                 {
-                    Assert.Multiple(() =>
+                    Assert.Multiple((System.Action)(() =>
                     {
                         Assert.That(rows.Count, Is.EqualTo(2));
 
@@ -49,7 +49,7 @@ namespace Cactus.MiniExcelNUnitTest
                         Assert.That(((String)rows[0].B).Trim(), Is.EqualTo("Sheet"));
                         Assert.That(((String)rows[1].A).Trim(), Is.EqualTo("A"));
                         Assert.That(((String)rows[1].B).Trim(), Is.EqualTo("S"));
-                    });
+                    }));
                 }
             }
            
