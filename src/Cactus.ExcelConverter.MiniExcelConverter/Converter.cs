@@ -253,6 +253,7 @@ namespace Cactus.ExcelConverter.MiniExcelConverter
             }
             if ((value is double dblValue) && !(value is decimal decValue ))
             {
+                //This will introdcue a known issue Decimal is always been used instead of double. However, it doesnt matter any more as we swichted from MiniExcel to ClosedXML.           
                 return Convert.ToDecimal(dblValue).ToString();
             }
             else
