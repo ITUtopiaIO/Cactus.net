@@ -1,4 +1,4 @@
-﻿using Cactus.ExcelConverter.MiniExcelConverter;
+﻿using Cactus.ExcelConverter.ClosedXMLConverter;
 using System.Runtime.Serialization;
 using Cactus.Cucumber;
 
@@ -11,7 +11,7 @@ namespace Cactus.ExcelConverter
 
         public Converter() 
         {
-            converter = new MiniExcelConverter.Converter();
+            converter = new ClosedXMLConverter.Converter();
         }
 
         public string ConvertExcelToFeature(string excelFileName, string extension=".feature", bool cloakMode = false)
