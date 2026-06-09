@@ -277,11 +277,20 @@ namespace Cactus.ExcelConverter.ClosedXMLConverter
 
             if (cell.DataType == XLDataType.Number)
             {
+                //To keep scientific notation for large numbers 
                 var d = cell.GetDouble();
-                return Utility.RemoveTrailingZeros(d.ToString("0.#############################", CultureInfo.InvariantCulture));
+                string result = cell.GetFormattedString() ?? string.Empty;
+                if (result.Contains("E", StringComparison.OrdinalIgnoreCase))
+                {
+                    return d.ToString();
+                }
+                else
+                {
+                    return Utility.RemoveTrailingZeros(d.ToString("0.#############################", CultureInfo.InvariantCulture));
+                }
             }
 
-            return Utility.RemoveTrailingZeros(cell.GetFormattedString());
+            return cell.GetFormattedString();
         }
 
     }

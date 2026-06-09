@@ -4,6 +4,7 @@ namespace Cactus.Cucumber
 {
     public class Utility
     {
+        //NOTE: Convert scientific notation to decimal should ONLY be used when comparing files for convenience, but NOT when converting Excel to feature!
         public static string ConvertScientificToDecimal(string value)
         {
             if (string.IsNullOrEmpty(value))

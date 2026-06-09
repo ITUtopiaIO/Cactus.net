@@ -89,6 +89,35 @@ namespace Cactus.ClosedXMLNUnitTest
                     }));
                 }
             }
+
+        }
+
+        [Test]
+        public void TestReadExcelNumbers()
+        {
+            using var workbook = new XLWorkbook(_file);
+
+            foreach (var worksheet in workbook.Worksheets)
+            {
+                var rows = worksheet.RangeUsed()!.RowsUsed().ToList();
+
+                if (worksheet.Name == "Number")
+                {
+                    Assert.Multiple((System.Action)(() =>
+                    {
+                        var cell = worksheet.Cell(1, 1);
+                        Assert.That(cell.DataType, Is.EqualTo(XLDataType.Number));
+                        string result = cell.GetFormattedString() ?? string.Empty;
+                        if (result.Contains("E", StringComparison.OrdinalIgnoreCase))
+                        {
+                            result = cell.GetDouble().ToString();
+                        }
+                        Assert.That(result, Is.EqualTo("6.75114325206254E-05"));
+
+                    }));
+                }
+            }
+
         }
     }
 }
