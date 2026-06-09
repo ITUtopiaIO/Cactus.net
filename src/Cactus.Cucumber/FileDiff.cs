@@ -142,7 +142,7 @@ namespace Cactus.Cucumber
                 }
                 else
                 {
-                    colValue = Utility.RemoveTrailingZeros(Utility.ConvertScientificToDecimal(colValue));
+                    colValue = Utility.NormalizeBooleanString(Utility.RemoveTrailingZeros(Utility.ConvertScientificToDecimal(colValue)));
                 }
 
                 sb.Append(Cucumber.Common.TABLEDIV + colValue);

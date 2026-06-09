@@ -27,6 +27,26 @@ namespace Cactus.Cucumber
             return value.ToString(format, CultureInfo.CurrentCulture);
         }
 
+        public static string NormalizeBooleanString(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            if (value.Trim().Equals("True", StringComparison.OrdinalIgnoreCase))
+            {
+                return "True";
+            }
+
+            if (value.Trim().Equals("False", StringComparison.OrdinalIgnoreCase))
+            {
+                return "False";
+            }
+
+            return value;
+        }
+
         public static string RemoveTrailingZeros(string value)
         {
             if (string.IsNullOrEmpty(value))
