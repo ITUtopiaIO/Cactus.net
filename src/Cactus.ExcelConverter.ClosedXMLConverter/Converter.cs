@@ -272,7 +272,7 @@ namespace Cactus.ExcelConverter.ClosedXMLConverter
 
             if (cell.DataType == XLDataType.DateTime)
             {
-                return cell.GetDateTime().ToString("M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                return Utility.FormatDateTime(cell.GetDateTime());
             }
 
             if (cell.DataType == XLDataType.Number)

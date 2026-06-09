@@ -1,4 +1,5 @@
 using DiffPlex;
+using System.Globalization;
 using System.Text;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Cactus.CucumberTest")]
@@ -129,7 +130,22 @@ namespace Cactus.Cucumber
             string[] cols = tempTableLine.Split(Cucumber.Common.TABLEDIV, StringSplitOptions.TrimEntries);
             foreach (string col in cols)
             {
-                sb.Append(Cucumber.Common.TABLEDIV+Utility.RemoveTrailingZeros(col.Trim()));
+                string colValue = col.Trim();
+
+                if (double.TryParse(colValue, NumberStyles.Any, CultureInfo.InvariantCulture, out _))
+                {
+                    colValue = Utility.RemoveTrailingZeros(Utility.ConvertScientificToDecimal(colValue));
+                }
+                else if (DateTime.TryParse(colValue, CultureInfo.CurrentCulture, DateTimeStyles.None, out DateTime dt))
+                {
+                    colValue = Utility.FormatDateTime(dt);
+                }
+                else
+                {
+                    colValue = Utility.RemoveTrailingZeros(Utility.ConvertScientificToDecimal(colValue));
+                }
+
+                sb.Append(Cucumber.Common.TABLEDIV + colValue);
             }
             sb.Append(Cucumber.Common.TABLEDIV);
 

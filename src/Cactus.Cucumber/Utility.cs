@@ -1,7 +1,32 @@
-﻿namespace Cactus.Cucumber
+﻿using System.Globalization;
+
+namespace Cactus.Cucumber
 {
     public class Utility
     {
+        public static string ConvertScientificToDecimal(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            if (!double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out double result))
+            {
+                return value;
+            }
+
+            return RemoveTrailingZeros(result.ToString("0.#############################", CultureInfo.InvariantCulture));
+        }
+
+        public static string FormatDateTime(DateTime value)
+        {
+            string format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern
+                          + " "
+                          + CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern;
+            return value.ToString(format, CultureInfo.CurrentCulture);
+        }
+
         public static string RemoveTrailingZeros(string value)
         {
             if (string.IsNullOrEmpty(value))
