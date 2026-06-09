@@ -1,11 +1,26 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Cactus.Cucumber;
+using Microsoft.Extensions.Configuration;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using System.ComponentModel;
+using System.Globalization;
 using System.Reflection;
 
+// Apply culture from appsettings.json / appsettings.local.json if specified
+var config = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json", optional: true)
+    .AddJsonFile("appsettings.development.json", optional: true, reloadOnChange: false)
+    .Build();
+
+string? cultureName = config["Culture"];
+if (!string.IsNullOrWhiteSpace(cultureName))
+{
+    var culture = new CultureInfo(cultureName);
+    CultureInfo.DefaultThreadCurrentCulture = culture;
+    CultureInfo.DefaultThreadCurrentUICulture = culture;
+}
 
 
 var app = new CommandApp<CactusCommand>();

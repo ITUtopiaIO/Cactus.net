@@ -1,0 +1,5 @@
+# Local appsettings overrides - not to be committed
+appsettings.[Dd]evelopment.json
+
+# Local application parameters - not to be committed
+launchSettings.json
