@@ -25,6 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Cactus.Cucumber\Cactus.Cucumber.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="TestExcelFile.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
