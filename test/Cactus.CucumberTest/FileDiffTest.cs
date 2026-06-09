@@ -92,14 +92,14 @@ namespace Cactus.CucumberTest
         public void SimplifyTableLineTest()
         {
             FileDiff fileDiff = new FileDiff();
-            Assert.That(fileDiff.SimplifyTableLine("|"), Is.EqualTo("|"));
-            Assert.That(fileDiff.SimplifyTableLine("Hello"), Is.EqualTo("Hello"));
-            Assert.That(fileDiff.SimplifyTableLine("Hello|"), Is.EqualTo("Hello|"));
-            Assert.That(fileDiff.SimplifyTableLine("|Hello"), Is.EqualTo("|Hello"));
-            Assert.That(fileDiff.SimplifyTableLine("|Hello|"), Is.EqualTo("|Hello|"));
-            Assert.That(fileDiff.SimplifyTableLine("|Hello|World|"), Is.EqualTo("|Hello|World|"));
-            Assert.That(fileDiff.SimplifyTableLine("|Hello||World|"), Is.EqualTo("|Hello||World|"));
-            Assert.That(fileDiff.SimplifyTableLine("| Hello | | World |"), Is.EqualTo("|Hello||World|"));
+            Assert.That(fileDiff.StandardizeTableLine("|"), Is.EqualTo("|"));
+            Assert.That(fileDiff.StandardizeTableLine("Hello"), Is.EqualTo("Hello"));
+            Assert.That(fileDiff.StandardizeTableLine("Hello|"), Is.EqualTo("Hello|"));
+            Assert.That(fileDiff.StandardizeTableLine("|Hello"), Is.EqualTo("|Hello"));
+            Assert.That(fileDiff.StandardizeTableLine("|Hello|"), Is.EqualTo("|Hello|"));
+            Assert.That(fileDiff.StandardizeTableLine("|Hello|World|"), Is.EqualTo("|Hello|World|"));
+            Assert.That(fileDiff.StandardizeTableLine("|Hello||World|"), Is.EqualTo("|Hello||World|"));
+            Assert.That(fileDiff.StandardizeTableLine("| Hello | | World |"), Is.EqualTo("|Hello||World|"));
 
         }
     }

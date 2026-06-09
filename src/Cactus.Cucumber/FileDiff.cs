@@ -100,7 +100,7 @@ namespace Cactus.Cucumber
                 }
                 if (value.Trim().StartsWith(Cucumber.Common.TABLEDIV) && ignoreTableFormat)
                 {
-                    sb.AppendLine(SimplifyTableLine(value));
+                    sb.AppendLine(StandardizeTableLine(value));
                     continue;
                 }
 
@@ -110,7 +110,7 @@ namespace Cactus.Cucumber
             return sb.ToString();
         }
 
-        internal string SimplifyTableLine(string tableLine)
+        internal string StandardizeTableLine(string tableLine)
         {
 
             StringBuilder sb = new StringBuilder();
@@ -129,7 +129,7 @@ namespace Cactus.Cucumber
             string[] cols = tempTableLine.Split(Cucumber.Common.TABLEDIV, StringSplitOptions.TrimEntries);
             foreach (string col in cols)
             {
-                sb.Append(Cucumber.Common.TABLEDIV+col.Trim());
+                sb.Append(Cucumber.Common.TABLEDIV+Utility.RemoveTrailingZeros(col.Trim()));
             }
             sb.Append(Cucumber.Common.TABLEDIV);
 
