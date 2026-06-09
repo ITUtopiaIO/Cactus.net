@@ -83,7 +83,7 @@ namespace Cactus.ClosedXMLNUnitTest
                         formattedDateTime = Utility.FormatDateTime(cell.GetDateTime());
                         Assert.That(formattedDateTime, Is.EqualTo(Utility.FormatDateTime(new DateTime(2026, 7, 1, 0, 0, 0))));
 
-                        //NOTE: Custom formated DateTime is treated as number at this point, need reformate the spreadsheet as date first to process
+                        //NOTE: Custom formatted DateTime is treated as number at this point, need reformate the spreadsheet as date first to process
                         cell = worksheet.Cell(4, 1);
                         Assert.That(cell.DataType, Is.EqualTo(XLDataType.Number));
                     }));
