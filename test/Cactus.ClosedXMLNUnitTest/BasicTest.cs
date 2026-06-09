@@ -114,6 +114,36 @@ namespace Cactus.ClosedXMLNUnitTest
                         }
                         Assert.That(result, Is.EqualTo("6.75114325206254E-05"));
 
+
+                        cell = worksheet.Cell(2, 1);
+                        Assert.That(cell.DataType, Is.EqualTo(XLDataType.Number));
+
+                        //ClosedXML will throw OverflowException when trying to get formatted string for 0E0
+                        var ex = Assert.Throws<System.OverflowException>((System.Action)(() => cell.GetFormattedString()));
+                        Assert.That(ex.Message, Is.EqualTo("Negating the minimum value of a twos complement number is invalid."));
+
+                        Assert.That(cell.GetDouble(), Is.EqualTo(0d));
+
+                        result = cell.GetDouble().ToString();
+                        Assert.That(result, Is.EqualTo("0"));
+
+                        cell = worksheet.Cell(3, 1);
+                        Assert.That(cell.DataType, Is.EqualTo(XLDataType.Number));
+                        result = cell.GetFormattedString() ?? string.Empty;
+                        if (result.Contains("E", StringComparison.OrdinalIgnoreCase))
+                        {
+                            result = cell.GetDouble().ToString();
+                        }
+                        Assert.That(result, Is.EqualTo("0.17139"));
+
+                        cell = worksheet.Cell(4, 1);
+                        Assert.That(cell.DataType, Is.EqualTo(XLDataType.Number));
+                        result = cell.GetFormattedString() ?? string.Empty;
+                        if (result.Contains("E", StringComparison.OrdinalIgnoreCase))
+                        {
+                            result = cell.GetDouble().ToString();
+                        }
+                        Assert.That(result, Is.EqualTo("1.49597870712345E+18"));
                     }));
                 }
             }

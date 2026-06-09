@@ -279,13 +279,21 @@ namespace Cactus.ExcelConverter.ClosedXMLConverter
             {
                 //To keep scientific notation for large numbers 
                 var d = cell.GetDouble();
-                string result = cell.GetFormattedString() ?? string.Empty;
-                if (result.Contains("E", StringComparison.OrdinalIgnoreCase))
+
+                //cell.GetFormattedString() could throw exception on 0E0
+                if (d.Equals(0d))
                 {
-                    return d.ToString();
+                    return Utility.RemoveTrailingZeros(d.ToString("0.############################", CultureInfo.InvariantCulture));
                 }
+
+
+                    string result = cell.GetFormattedString() ?? string.Empty;
+                    if (result.Contains("E", StringComparison.OrdinalIgnoreCase))
+                    {
+                            return d.ToString();
+                    }
                 else
-                {
+                { 
                     return Utility.RemoveTrailingZeros(d.ToString("0.#############################", CultureInfo.InvariantCulture));
                 }
             }
