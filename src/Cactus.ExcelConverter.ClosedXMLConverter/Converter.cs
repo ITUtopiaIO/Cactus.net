@@ -68,7 +68,7 @@ namespace Cactus.ExcelConverter.ClosedXMLConverter
                 for (int rowIndex = firstRow; rowIndex <= lastRow; rowIndex++)
                 {
                     string firstColumnValue = GetCellData(worksheet.Cell(rowIndex, 1));
-                    if (firstColumnValue.Equals(SCENARIO, StringComparison.OrdinalIgnoreCase))
+                    if (firstColumnValue.StartsWith(SCENARIO, StringComparison.OrdinalIgnoreCase))
                     {
                         hasScenarioInFirstColumn = true;
                         break;

@@ -3,6 +3,8 @@
 Feature: DataGrid
 
 #Sheet: AddTwoNumbers
+Scenario: Add Two Numbers
+
 Given I have following two numbers  
 | First #    | Op    | Second #  |
 |         50 | Plus  |        70 |
