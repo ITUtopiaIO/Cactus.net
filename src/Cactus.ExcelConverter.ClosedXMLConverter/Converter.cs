@@ -47,7 +47,7 @@ namespace Cactus.ExcelConverter.ClosedXMLConverter
                     continue;
                 }
 
-                if (sheetName.Equals(BACKGROUND))
+                if (sheetName.Equals(BACKGROUND, StringComparison.OrdinalIgnoreCase))
                 {
                     outputFile.WriteLine(BACKGROUND + COLON);
                 }
@@ -63,6 +63,22 @@ namespace Cactus.ExcelConverter.ClosedXMLConverter
 
                 int firstRow = usedRange.RangeAddress.FirstAddress.RowNumber;
                 int lastRow = usedRange.RangeAddress.LastAddress.RowNumber;
+
+                bool hasScenarioInFirstColumn = false;
+                for (int rowIndex = firstRow; rowIndex <= lastRow; rowIndex++)
+                {
+                    string firstColumnValue = GetCellData(worksheet.Cell(rowIndex, 1));
+                    if (firstColumnValue.Equals(SCENARIO, StringComparison.OrdinalIgnoreCase))
+                    {
+                        hasScenarioInFirstColumn = true;
+                        break;
+                    }
+                }
+
+                if (!sheetName.Equals(BACKGROUND, StringComparison.OrdinalIgnoreCase) && !hasScenarioInFirstColumn)
+                {
+                    outputFile.WriteLine(SCENARIO + COLON + " " + sheetName);
+                }
 
                 for (int rowIndex = firstRow; rowIndex <= lastRow; rowIndex++)
                 {
