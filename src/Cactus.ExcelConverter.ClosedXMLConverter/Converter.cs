@@ -64,6 +64,7 @@ namespace Cactus.ExcelConverter.ClosedXMLConverter
                 int firstRow = usedRange.RangeAddress.FirstAddress.RowNumber;
                 int lastRow = usedRange.RangeAddress.LastAddress.RowNumber;
 
+                //TODO: Need to check what happens on 'EXAMPLE' case, if the first column is 'EXAMPLE' but it's not actually a scenario, currently it will be treated as scenario, need to find a way to avoid this kind of false positive.
                 bool hasScenarioInFirstColumn = false;
                 for (int rowIndex = firstRow; rowIndex <= lastRow; rowIndex++)
                 {
@@ -100,7 +101,7 @@ namespace Cactus.ExcelConverter.ClosedXMLConverter
                     else if (isReadingTable && !string.IsNullOrEmpty(firstColumn) && firstColumn.StartsWith("#"))
                     {
                             //Comment row inside table, will be ignored and not added to the table
-                            //Potential issue: if the comment row is at the end of the table, it actually should be included in the feature file, will review this one later.
+                            //TODO: Potential issue: if the comment row is at the end of the table, it actually should be included in the feature file, will review this one later.
                         continue;
                     }
                     else
